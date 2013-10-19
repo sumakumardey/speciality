@@ -22,7 +22,7 @@ class Dish < ActiveRecord::Base
 
 	private
 		def build_new_tags
-			(tag_names || []).each do |name|
+			(tag_names || "").split(",").each do |name|
 				self.tags << Tag.find_or_create_by_name(name)
 			end
 		end

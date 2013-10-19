@@ -1,9 +1,11 @@
 class TagsController < ApplicationController
 	def search
-		tags = Tag.search params[cname][:name]
+		tags = Tag.search params[cname][:name], autocomplete: true
 		respond_to do |format|
-			# format.html { redirect_to tags_url }
-			format.json { render json: tags.map(&:name) }
+			format.json {
+				results = tags.map{ |tag| { :id => tag.name, :text => tag.name } }
+				render json: results
+			}
 		end
 	end
 
