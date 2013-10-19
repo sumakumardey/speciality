@@ -18,7 +18,7 @@ class Dish < ActiveRecord::Base
 
 
 	scope :search_import,includes([:tag_dishes,:tags])
-	scope :find_recent_items, lambda { |items|
+	scope :find_recent_dishes, lambda { |items|
 		order("created_at DESC").limit(items)
 	}
 	scope :include_tags, includes([:tags, :restaurant])

@@ -87,22 +87,4 @@
 </div>
 <script>
     $('.carousel').carousel();
-    $('.front_component').mouseenter(function() {
-        var parent = $(this).parent();
-        $(this).fadeOut(100,function() { 
-            parent.find('.back_component').fadeIn(100);
-        });
-     });
-    $('.back_component').mouseleave(function() {
-        var parent = $(this).parent();
-        $(this).fadeOut(100,function() {
-            parent.find('.front_component').fadeIn(100); 
-        });
-    });
-    
-    $('#login').popover({
-        html : true,
-        animation : true,
-        content : 'hello'
-	});
 </script>

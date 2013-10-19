@@ -93,17 +93,17 @@ var searchTag,
 			}
 		});
 		var MyEngine = {
- 		   compile: function(template) {
-        		return {
-            		render: function(context) {
-                		return template.replace(/\{\{\s*(\w+)\s*\}\}/g,
-    						function(match, p1) {
-         						return jQuery('<div/>').text(context[p1] || '').html();
-    						});
+			compile: function(template) {
+				return {
+					render: function(context) {
+						return template.replace(/\{\{\s*(\w+)\s*\}\}/g,
+						function(match, p1) {
+							return jQuery('<div/>').text(context[p1] || '').html();
+						});
 					}
-            	}
-        	}
-    	};
+				}
+			}
+		};
 		$( "#search_speciality" ).typeahead([
 		{
 			name: 'dishes',
@@ -148,5 +148,25 @@ var searchTag,
 			timeout: 1000
 		}
 		]);
+		
+		$('.front_component').mouseenter(function() {
+			var parent = $(this).parent();
+			$(this).fadeOut(100,function() { 
+				parent.find('.back_component').fadeIn(100);
+			});
+		});
+		$('.back_component').mouseleave(function() {
+			var parent = $(this).parent();
+			$(this).fadeOut(100,function() {
+				parent.find('.front_component').fadeIn(100); 
+			});
+		});
+  
+		$('#login').popover({
+			html : true,
+			animation : true,
+			content : 'hello'
+		});
+	
 	});
 }(jQuery));

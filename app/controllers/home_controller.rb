@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_filter :load_recent_items, :compute_trending_tags,
+	before_filter :load_recent_dishes, :compute_trending_tags,
 								:recently_added_dishes, :only => :index
 	def index
 		
@@ -50,8 +50,8 @@ class HomeController < ApplicationController
 		
 	end
 	private
-		def load_recent_items
-			@dishes = Dish.find_recent_items(20).include_tags
+		def load_recent_dishes
+			@dishes = Dish.find_recent_dishes(20).include_tags
 		end
 		
 		def compute_trending_tags
