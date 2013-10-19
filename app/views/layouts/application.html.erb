@@ -8,6 +8,11 @@
 </head>
 <body>
   Current User :: <%= current_or_guest_user.name %>
+  <% if current_user? %>
+    <%= link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter) %>
+  <% else %>
+    <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+  <% end %>
 	<%= yield %>
 </body>
 </html>
