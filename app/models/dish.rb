@@ -7,8 +7,9 @@ class Dish < ActiveRecord::Base
 	has_many :tag_dishes
 	has_many :tags, :through => :tag_dishes
 
-	attr_accessor :tag_names
+	attr_accessor :tag_names, :restaurant_name
 	before_save :build_new_tags
+	validates :restaurant_id, :presence => :true
 	
 	private
 		def build_new_tags
