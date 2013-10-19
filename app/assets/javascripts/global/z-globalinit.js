@@ -34,6 +34,7 @@ var searchTag,
 					};
 				}
 			},
+			minimumInputLength: 1,
 			multiple: true,
 			ajax: {
 					url: '/tags/search.json',
