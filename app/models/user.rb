@@ -15,6 +15,24 @@ class User < ActiveRecord::Base
   has_one :attachment, :as => :attachable, :dependent => :destroy
 	letsrate_rater
 
+  scope :find_recent_users, lambda { |count|
+    order("created_at DESC").limit(count)
+  }
+
+  def calculate_score
+    sum = 0
+
+    if(no_of_ratings)
+      sum += (no_of_ratings * 3) 
+    end
+
+    if(no_of_reviews)
+      sum += (no_of_reviews * 10)
+    end
+
+    (sum + self.dishes.sum(&:total_ratings)).to_i
+  end
+
 	def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
 		user = User.where(:provider => auth.provider, :uid => auth.uid).first
 		unless user

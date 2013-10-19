@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
+
 	before_filter :load_recent_dishes, :compute_trending_tags,
-								:recently_added_dishes, :only => :index
+								:recently_added_dishes, :recent_users, :top_foodies, :only => :index
+
 	def index
 		
 	end
@@ -59,8 +61,19 @@ class HomeController < ApplicationController
 			list = @tags.map { |tag| [tag, @dishes.select{ |dish| dish.tags.include? tag }.sum(&:total_ratings)] }
 			@trending_tags_array = list.sort_by(&:last).reverse[0..3]
 		end
-		
+
 		def recently_added_dishes
 			@recently_added_dishes = @dishes[0..7]
 		end
+
+    def recent_users
+      @recent_users = User.find_recent_users(20)
+    end
+
+    def top_foodies
+      list = @recent_users.map do |user| 
+        [user, user.calculate_score]
+      end
+      @top_foodies = list.sort_by(&:last).reverse[0..3]
+    end
 end
