@@ -11,11 +11,6 @@
 </p>
 
 <p>
-  <b>Location:</b>
-  <%= @dish.location_id %>
-</p>
-
-<p>
   <b>Description:</b>
   <%= @dish.description %>
 </p>
@@ -36,16 +31,52 @@
 </p>
 
 <p>
+  <b>Image</b>
+  <%= image_tag dish_show_image_path(@dish.id) %>
+</p>
+
+<p>
   <b>Awesomeness:</b>
   <%= rating_stars(@dish) %> <%= rating_average(@dish) %>
   No of people who rated : <%= awesomeness_qty(@dish) %>
 </p>
 <p>
-	<% (@dish.tags || []).each do |tag| %>
-		<b> "<%= tag.name %>" <b> 
-	<% end %>
+  <% (@dish.tags || []).each do |tag| %>
+    <b> "<%= tag.name %>" <b> 
+  <% end %>
 <p>
+    <meta name="viewport" content="initial-scale=4.0, user-scalable=yes">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body, #map-canvas {
+        height: 80%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+function initialize() {
+  var myLatlng = new google.maps.LatLng("<%=@dish.location.latitude%>","<%=@dish.location.longitude%>");
+  var mapOptions = {
+    zoom: 11,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+    <div id="map-canvas"></div>
 <p class="reviews_container">
   <% if @reviews %>
     <% @reviews.each do |review| %>
