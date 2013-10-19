@@ -28,17 +28,15 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :restaurant_id %><br />
-    <%= f.number_field :restaurant_id %>
+		<%= f.label :restaurant_name %><br />
+		<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete",
+				:'data-id' => @dish.restaurant_id, :'data-text' => @dish.restaurant_name  %>
   </div>
-  <div class="field">
-    <%= f.label :avg_ratings %><br />
-    <%= f.number_field :avg_ratings %>
-  </div>
-  <div class="field">
-    <%= f.label :no_of_ratings %><br />
-    <%= f.number_field :no_of_ratings %>
-  </div>
+	<div class="field">
+		<%= f.label :tag_names %><br />
+		<%= f.text_field :tag_names, :class => "tags_autocomplete",
+				:'data-value' => @dish.tags.map(&:name).join(","), :value => " " %>
+	</div>
   <div class="actions">
     <%= f.submit %>
   </div>

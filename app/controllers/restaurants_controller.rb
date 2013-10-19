@@ -2,7 +2,8 @@ class RestaurantsController < ApplicationController
 	def search
 		restaurants = Restaurant.search params[cname][:name], autocomplete: true
 		respond_to do |format|
-			format.json { render json: restaurants.map(&:name) }
+			results = restaurants.map{ |restaurant| { :id => restaurant.name, :text => restaurant.name } }
+			format.json { render json: results }
 		end
 	end
 

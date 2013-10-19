@@ -22,7 +22,7 @@
 
 <p>
   <b>Restaurant:</b>
-  <%= @dish.restaurant_id %>
+  <%= @dish.restaurant_name %>
 </p>
 
 <p>
@@ -40,6 +40,11 @@
   <%= rating_stars(@dish) %> <%= rating_average(@dish) %>
   No of people who rated : <%= awesomeness_qty(@dish) %>
 </p>
+<p>
+	<% (@dish.tags || []).each do |tag| %>
+		<b> "<%= tag.name %>" <b> 
+	<% end %>
+<p>
 
 <p class="reviews_container">
   <% if @reviews %>
