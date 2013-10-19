@@ -41,12 +41,13 @@
   No of people who rated : <%= awesomeness_qty(@dish) %>
 </p>
 
-<p>
+<p class="reviews_container">
   <% if @reviews %>
     <% @reviews.each do |review| %>
       <%= review.description %>
       <%#= review.user.name %>
       <%#= review.user.no_of_reviews %>
+      <br />
     <% end %>
   <% end %>
 </p>
