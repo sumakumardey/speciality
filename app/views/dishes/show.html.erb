@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @dish.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @dish.user_id %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @dish.location_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @dish.description %>
+</p>
+
+<p>
+  <b>Restaurent:</b>
+  <%= @dish.restaurent_id %>
+</p>
+
+<p>
+  <b>Avg points:</b>
+  <%= @dish.avg_points %>
+</p>
+
+<p>
+  <b>No of ratings:</b>
+  <%= @dish.no_of_ratings %>
+</p>
+
+
+<%= link_to 'Edit', edit_dish_path(@dish) %> |
+<%= link_to 'Back', dishes_path %>
