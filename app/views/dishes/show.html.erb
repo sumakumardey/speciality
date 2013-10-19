@@ -1,78 +1,115 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @dish.name %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @dish.user_id %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @dish.location_id %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @dish.description %>
-</p>
-
-<p>
-  <b>Restaurant:</b>
-  <%= @dish.restaurant_name %>
-</p>
-
-<p>
-  <b>Avg points:</b>
-  <%= @dish.avg_ratings %>
-</p>
-
-<p>
-  <b>No of ratings:</b>
-  <%= @dish.no_of_ratings %>
-</p>
-
-<p>
-  <b>Image</b>
-  <%= image_tag dish_show_image_path(@dish.id) %>
-</p>
-
-<p>
-  <b>Awesomeness:</b>
-  <%= rating_stars(@dish) %> <%= rating_average(@dish) %>
-  No of people who rated : <%= awesomeness_qty(@dish) %>
-</p>
-<p>
-	<% (@dish.tags || []).each do |tag| %>
-		<b> "<%= tag.name %>" <b> 
-	<% end %>
-<p>
-
-<p class="reviews_container">
-  <% if @reviews %>
-    <% @reviews.each do |review| %>
-      <%= review.description %>
-      <%#= review.user.name %>
-      <%#= review.user.no_of_reviews %>
-      <br />
-    <% end %>
-  <% end %>
-</p>
-
-<p>
-  Add a review
-  <%= form_for(@new_review, remote: true) do |new_review| %>
-    <div class="field">
-      <%= new_review.label :description %><br /> 
-      <%= new_review.text_field :description %>
-    <div>
-      <%= new_review.hidden_field :dish_id, :value => @dish.id %>
-      <%= new_review.submit %>
-  <% end %>
-</p>
-
-<%= link_to 'Edit', edit_dish_path(@dish) %> |
-<%= link_to 'Back', dishes_path %>
+<div class="container container_item_page">
+           <div class="row item_info_box">
+                <div class="col-lg-12 section_item">
+                    <div class="row row_item">
+                        <div class="item_same_line">
+                            <img src="img/tart-thumb.png" class="item_info_bar">
+                        </div>
+                        <div class="item_same_line item_main_info">
+                        </div>
+                    </div>  
+                    <div class="row row_item green_border">
+                     <div class="restaurant_address">
+                        <p class="address_text">skdjhfksjdhfksjhdf</p>
+                        <a href="#" class="right_anchor"> Show on map </a> 
+                     </div>
+                     <div class="row row_item map">
+                         slkdflskjdflksjdf
+                        </div>
+                    </div>   
+                </div>
+                
+           </div>
+           
+           <div class="row item_info_box reviews_container">
+                <div class="col-lg-12 reviews_top_bar">
+                  <p class="address_text">skdjhfksjdhfksjhdf</p>
+                    <a href="#" class="right_anchor"> Write review </a> 
+                    <p href="#" class="right_anchor_p"> 23 reviews </p> 
+                </div>
+               <div class="review_pagination_controller">
+                <div class="reviews">
+                  <div class="reviewer_image_container">
+                    <img src="img/cupcake-thumb.png" class="reviewer_image" > 
+                      <p class="reviewer_name">skdhfks</p>
+                      <p class="reviewer_rating">4.0</p>
+                  </div>
+                  <div class="reviewer_review_content">
+                        <p class="review_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus in mauris lacinia vestibulum id at arcu. Nunc quis erat quis ligula eleifend aliquet. Cras quam mi, porttitor sed lectus vitae, vestibulum posuere urna. Fusce sit amet urna nec lacus dignissim ornare. Fusce aliquet rutrum felis, non vulputate ipsum auctor a. Duis in adipiscing ante. Sed mattis suscipit nulla, vel semper velit porta eu. Maecenas consequat enim at rutrum feugiat. Mauris nunc magna, scelerisque et neque sed, auctor rutrum massa. Etiam sed ultrices felis, sit amet fringilla velit. Nullam nibh est, scelerisque at massa quis, semper sagittis mi. Phasellus rhoncus nisl eu massa commodo, lobortis mollis sem aliquet. Sed pretium eget turpis at ullamcorper. Sed et nisi id justo adipiscing hendrerit a et lectus. Suspendisse vel felis eros.</p>
+                        <p class="review_date">sdkfjhskdjfhskdjhfsdf</p>      
+                  </div>    
+                </div>
+               <div class="reviews">
+                  <div class="reviewer_image_container">
+                    <img src="img/cupcake-thumb.png" class="reviewer_image" > 
+                      <p class="reviewer_name">skdhfks</p>
+                      <p class="reviewer_rating">4.0</p>
+                  </div>
+                  <div class="reviewer_review_content">
+                        <p class="review_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus in mauris lacinia vestibulum id at arcu. Nunc quis erat quis ligula eleifend aliquet. Cras quam mi, porttitor sed lectus vitae, vestibulum posuere urna. Fusce sit amet urna nec lacus dignissim ornare. Fusce aliquet rutrum felis, non vulputate ipsum auctor a. Duis in adipiscing ante. Sed mattis suscipit nulla, vel semper velit porta eu. Maecenas consequat enim at rutrum feugiat. Mauris nunc magna, scelerisque et neque sed, auctor rutrum massa. Etiam sed ultrices felis, sit amet fringilla velit. Nullam nibh est, scelerisque at massa quis, semper sagittis mi. Phasellus rhoncus nisl eu massa commodo, lobortis mollis sem aliquet. Sed pretium eget turpis at ullamcorper. Sed et nisi id justo adipiscing hendrerit a et lectus. Suspendisse vel felis eros.</p>
+                        <p class="review_date">sdkfjhskdjfhskdjhfsdf</p>      
+                  </div>    
+                </div>
+               <div class="reviews">
+                  <div class="reviewer_image_container">
+                    <img src="img/cupcake-thumb.png" class="reviewer_image" > 
+                      <p class="reviewer_name">skdhfks</p>
+                      <p class="reviewer_rating">4.0</p>
+                  </div>
+                  <div class="reviewer_review_content">
+                        <p class="review_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus in mauris lacinia vestibulum id at arcu. Nunc quis erat quis ligula eleifend aliquet. Cras quam mi, porttitor sed lectus vitae, vestibulum posuere urna. Fusce sit amet urna nec lacus dignissim ornare. Fusce aliquet rutrum felis, non vulputate ipsum auctor a. Duis in adipiscing ante. Sed mattis suscipit nulla, vel semper velit porta eu. Maecenas consequat enim at rutrum feugiat. Mauris nunc magna, scelerisque et neque sed, auctor rutrum massa. Etiam sed ultrices felis, sit amet fringilla velit. Nullam nibh est, scelerisque at massa quis, semper sagittis mi. Phasellus rhoncus nisl eu massa commodo, lobortis mollis sem aliquet. Sed pretium eget turpis at ullamcorper. Sed et nisi id justo adipiscing hendrerit a et lectus. Suspendisse vel felis eros.</p>
+                        <p class="review_date">sdkfjhskdjfhskdjhfsdf</p>      
+                  </div>    
+                </div>
+               <div class="reviews">
+                  <div class="reviewer_image_container">
+                    <img src="img/cupcake-thumb.png" class="reviewer_image" > 
+                      <p class="reviewer_name">skdhfks</p>
+                      <p class="reviewer_rating">4.0</p>
+                  </div>
+                  <div class="reviewer_review_content">
+                        <p class="review_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus in mauris lacinia vestibulum id at arcu. Nunc quis erat quis ligula eleifend aliquet. Cras quam mi, porttitor sed lectus vitae, vestibulum posuere urna. Fusce sit amet urna nec lacus dignissim ornare. Fusce aliquet rutrum felis, non vulputate ipsum auctor a. Duis in adipiscing ante. Sed mattis suscipit nulla, vel semper velit porta eu. Maecenas consequat enim at rutrum feugiat. Mauris nunc magna, scelerisque et neque sed, auctor rutrum massa. Etiam sed ultrices felis, sit amet fringilla velit. Nullam nibh est, scelerisque at massa quis, semper sagittis mi. Phasellus rhoncus nisl eu massa commodo, lobortis mollis sem aliquet. Sed pretium eget turpis at ullamcorper. Sed et nisi id justo adipiscing hendrerit a et lectus. Suspendisse vel felis eros.</p>
+                        <p class="review_date">sdkfjhskdjfhskdjhfsdf</p>      
+                  </div>    
+                </div>
+                   
+                 <div class="reviews">
+                  <div class="reviewer_image_container">
+                    <img src="img/cupcake-thumb.png" class="reviewer_image" > 
+                      <p class="reviewer_name">skdhfks</p>
+                      <p class="reviewer_rating">4.0</p>
+                  </div>
+                  <div class="reviewer_review_content">
+                        <p class="review_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a lacus in mauris lacinia vestibulum id at arcu. Nunc quis erat quis ligula eleifend aliquet. Cras quam mi, porttitor sed lectus vitae, vestibulum posuere urna. Fusce sit amet urna nec lacus dignissim ornare. Fusce aliquet rutrum felis, non vulputate ipsum auctor a. Duis in adipiscing ante. Sed mattis suscipit nulla, vel semper velit porta eu. Maecenas consequat enim at rutrum feugiat. Mauris nunc magna, scelerisque et neque sed, auctor rutrum massa. Etiam sed ultrices felis, sit amet fringilla velit. Nullam nibh est, scelerisque at massa quis, semper sagittis mi. Phasellus rhoncus nisl eu massa commodo, lobortis mollis sem aliquet. Sed pretium eget turpis at ullamcorper. Sed et nisi id justo adipiscing hendrerit a et lectus. Suspendisse vel felis eros.</p>
+                        <p class="review_date">sdkfjhskdjfhskdjhfsdf</p>      
+                  </div>    
+                </div>   
+            </div>
+               
+             <div class="col-lg-12 reviews_comment">
+                  <p class="comment_heading">WRITE A REVIEW FOR <span class="color_green">SOMETHING</span> AT SOMEWHERE</p> 
+                 <textarea class="commment_textarea"></textarea>
+                 
+                 <button type="button" class="btn btn-success right_button">SUBMIT REVIEW</button>
+            </div>   
+                
+           </div>
+            
+        </div>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script>
+            $('.map_opener').click(function()
+                                   {
+                                       if($('.map').is(':visible'))
+                                       {
+                                           $('.map').slideUp();   
+                                       }
+                                       else
+                                       {
+                                           $('.map').slideDown();
+                                       }
+                                       
+                                       return false;
+                                   });
+            
+        </script>

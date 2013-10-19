@@ -137,7 +137,7 @@ var searchTag,
 			name: 'places',
 			remote: {
 				url: '/place_autocompleter/?search=%QUERY',
-				filter: function(response){
+				filter: function (response) {
 					return response.places.data;
 				},
 				cache: false
@@ -149,15 +149,15 @@ var searchTag,
 		}
 		]);
 		
-		$('.front_component').mouseenter(function() {
+		$('.front_component').mouseenter(function () {
 			var parent = $(this).parent();
-			$(this).fadeOut(100,function() { 
+			$(this).fadeOut(100, function () { 
 				parent.find('.back_component').fadeIn(100);
 			});
 		});
-		$('.back_component').mouseleave(function() {
+		$('.back_component').mouseleave(function () {
 			var parent = $(this).parent();
-			$(this).fadeOut(100,function() {
+			$(this).fadeOut(100, function () {
 				parent.find('.front_component').fadeIn(100); 
 			});
 		});
@@ -166,6 +166,11 @@ var searchTag,
 			html : true,
 			animation : true,
 			content : 'hello'
+		});
+
+		$('#add_dish').click(function (ev) {
+			ev.preventDefault();
+			$('#new_item_modal').modal();
 		});
 	
 	});

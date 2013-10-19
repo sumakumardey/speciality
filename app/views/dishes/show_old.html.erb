@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @dish.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @dish.user_id %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @dish.location_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @dish.description %>
+</p>
+
+<p>
+  <b>Restaurant:</b>
+  <%= @dish.restaurant_name %>
+</p>
+
+<p>
+  <b>Avg points:</b>
+  <%= @dish.avg_ratings %>
+</p>
+
+<p>
+  <b>No of ratings:</b>
+  <%= @dish.no_of_ratings %>
+</p>
+
+<p>
+  <b>Awesomeness:</b>
+  <%= rating_stars(@dish) %> <%= rating_average(@dish) %>
+  No of people who rated : <%= awesomeness_qty(@dish) %>
+</p>
+<p>
+	<% (@dish.tags || []).each do |tag| %>
+		<b> "<%= tag.name %>" <b> 
+	<% end %>
+<p>
+
+<p class="reviews_container">
+  <% if @reviews %>
+    <% @reviews.each do |review| %>
+      <%= review.description %>
+      <%#= review.user.name %>
+      <%#= review.user.no_of_reviews %>
+      <br />
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  Add a review
+  <%= form_for(@new_review, remote: true) do |new_review| %>
+    <div class="field">
+      <%= new_review.label :description %><br /> 
+      <%= new_review.text_field :description %>
+    <div>
+      <%= new_review.hidden_field :dish_id, :value => @dish.id %>
+      <%= new_review.submit %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_dish_path(@dish) %> |
+<%= link_to 'Back', dishes_path %>
