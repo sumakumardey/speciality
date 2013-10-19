@@ -37,6 +37,10 @@ class Dish < ActiveRecord::Base
 	validates :restaurant_id, :presence => :true
 	validates :name, :presence => :true
 
+	def self.recently_added
+		Dish.find(:all, :include => :location, :order => "id desc", :limit => 8)
+	end
+
 	private
 		def build_new_tags
 			self.tags.clear
