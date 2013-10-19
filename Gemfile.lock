@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/robban/letsrate.git
+  revision: 543224f40e17d413c7a7ce06cc3547bf9f56a86a
+  branch: add_possibility_to_rerate
+  specs:
+    letsrate (1.0.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,7 +78,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    letsrate (1.0.8)
     libv8 (3.16.14.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -192,7 +198,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
-  letsrate
+  letsrate!
   mysql2 (= 0.3.13)
   omniauth
   omniauth-twitter
