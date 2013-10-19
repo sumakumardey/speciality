@@ -92,5 +92,61 @@ var searchTag,
 				callback({ id: id, text: text});
 			}
 		});
+		var MyEngine = {
+ 		   compile: function(template) {
+        		return {
+            		render: function(context) {
+                		return template.replace(/\{\{\s*(\w+)\s*\}\}/g,
+    						function(match, p1) {
+         						return jQuery('<div/>').text(context[p1] || '').html();
+    						});
+					}
+            	}
+        	}
+    	};
+		$( "#search_speciality" ).typeahead([
+		{
+			name: 'dishes',
+			remote: {
+				url: '/dish_autocompleter/?search=%QUERY',
+				filter: function(response){
+					return response.dishes.data;
+				},
+				cache: false
+			},
+			header: '<h5 class="section-title">Dishes</h5>',
+			template: '<p>{{ value }}</p>',
+			engine: MyEngine,
+			timeout: 1000
+		},
+		{
+			name: 'tags',
+			remote: {
+				url: '/tag_autocompleter/?search=%QUERY',
+				filter: function(response){
+					return response.tags.data;
+				},
+				cache: false
+			},
+			header: '<h5 class="section-title">Tags</h5>',
+			template: '<p>{{ value }}</p>',
+			engine: MyEngine,
+			timeout: 1000
+		},
+		{
+			name: 'places',
+			remote: {
+				url: '/place_autocompleter/?search=%QUERY',
+				filter: function(response){
+					return response.places.data;
+				},
+				cache: false
+			},
+			header: '<h5 class="section-title">Places</h5>',
+			template: '<p>{{ value }}</p>',
+			engine: MyEngine,
+			timeout: 1000
+		}
+		]);
 	});
 }(jQuery));

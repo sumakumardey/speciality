@@ -19,7 +19,8 @@ class Dish < ActiveRecord::Base
 	scope :search_import,includes([:tag_dishes,:tags])
 	def search_data
 		{
-			tag: tags.collect(&:name)
+			tag: tags.collect(&:name),
+			name: name
 		}
 	end
 
