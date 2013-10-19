@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	attr_accessible :provider, :uid
 
 	belongs_to :location
-	has_many :items
+	has_many :dishes
 	has_many :reviews
 
 	letsrate_rater

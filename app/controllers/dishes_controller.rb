@@ -25,7 +25,7 @@ class DishesController < ApplicationController
 	# GET /dishes/new
 	# GET /dishes/new.json
 	def new
-		@dish = Dish.new
+		@dish = current_or_guest_user.dishes.new
 
 		respond_to do |format|
 			format.html # new.html.erb
@@ -35,13 +35,14 @@ class DishesController < ApplicationController
 
 	# GET /dishes/1/edit
 	def edit
-		@dish = Dish.find(params[:id])
+		@dish = current_or_guest_user.dishes.find(params[:id])
 	end
 
 	# POST /dishes
 	# POST /dishes.json
 	def create
-		@dish = @restaurant.dishes.build(params[cname])
+		@dish = current_or_guest_user.dishes.build(params[cname])
+    @dish.restaurant = @restaurant
 
 		respond_to do |format|
 			if @dish.save
@@ -57,7 +58,7 @@ class DishesController < ApplicationController
 	# PUT /dishes/1
 	# PUT /dishes/1.json
 	def update
-		@dish = Dish.find(params[:id])
+		@dish = current_or_guest_user.dishes.find(params[:id])
 		@dish.restaurant = @restaurant
 		respond_to do |format|
 			if @dish.update_attributes(params[:dish])
@@ -73,7 +74,7 @@ class DishesController < ApplicationController
 	# DELETE /dishes/1
 	# DELETE /dishes/1.json
 	def destroy
-		@dish = Dish.find(params[:id])
+		@dish = current_or_guest_user.dishes.find(params[:id])
 		@dish.destroy
 
 		respond_to do |format|
