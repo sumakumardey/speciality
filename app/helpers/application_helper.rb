@@ -1,7 +1,4 @@
 module ApplicationHelper
-  def current_user?
-    !current_user
-  end
 
   def rating_stars(dish)
     content_tag :div do

@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_guest_user
 
+  def current_user?
+    !current_user
+  end
+  helper_method :current_user?
+
   def set_guest_user
-    if !current_user
+    if current_user?
       guest_user
     end
   end
