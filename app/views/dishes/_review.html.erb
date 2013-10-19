@@ -1,0 +1,23 @@
+<% unless review.new_record? %>
+	<div class="reviews">
+		<div class="reviewer_image_container">
+			<img src="<%= asset_path 'default-profile-pic.png' %>" class="reviewer_image" > 
+			<p class="reviewer_name"><%= review.user.name %></p>
+			<p class="reviewer_rating">
+				<% rating = review.user.ratings_given.where({
+					:dimension => "awesomeness",
+					:rateable_id => @dish.id,
+					:rateable_type => @dish.class.name }).first %>
+				<% rating.stars unless rating.blank? %>
+			</p>
+		</div>
+		<div class="reviewer_review_content">
+			<p class="review_content">
+				<%= review.description %>
+			</p>
+			<p class="review_date">
+				<%= time_ago_in_words review.created_at %> ago
+			</p>
+		</div>
+	</div>
+<% end %>

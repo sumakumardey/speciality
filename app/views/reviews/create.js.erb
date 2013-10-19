@@ -1,5 +1,7 @@
 $('#flash').html("<%= escape_javascript raw(flash_display) %>");
 <% if @review.valid? %>
-  $('.reviews_container').append('<%= @review.description %>' + "<br />");
-  $('#review_description').val('');
+	$('.review_pagination_controller')
+		.append("<%= escape_javascript(render :partial => 'dishes/review',
+						:locals => { :review => @review }) %>");
+	$('#review_description').val('');
 <% end %>
