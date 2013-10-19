@@ -50,10 +50,10 @@ class DishesController < ApplicationController
 	# POST /dishes.json
 	def create
     attachment = params[cname].delete(:attachment)
-		@dish = current_or_guest_user.dishes.build(params[cname])
+	@dish = current_or_guest_user.dishes.build(params[cname])
     @dish.build_attachment(:avatar => attachment)
     @dish.restaurant = @restaurant
-
+    build_location
 		respond_to do |format|
 			if @dish.save
 				format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
@@ -94,6 +94,11 @@ class DishesController < ApplicationController
 			format.json { head :no_content }
 		end
 	end
+
+	def build_location
+		@dish.build_location(params[:location])
+	end
+	
 	private
 		def load_restaurant
 			@restaurant = Restaurant.find_or_create_by_name(params[cname][:restaurant_name])
