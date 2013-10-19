@@ -39,6 +39,40 @@ class ApplicationController < ActionController::Base
   private
 
   def logging_in
+
+    # belongs_to :location
+    if guest_user.location
+      current_user.location = location
+      current_user.save!
+    end
+
+    #has_many :dishes
+    guest_dishes = guest_user.dishes.all
+    guest_dishes.each do |dish|
+      dish.user_id = current_user.id
+      dish.save!
+    end
+
+    #has_many :reviews
+    guest_reviews = guest_user.reviews.all
+    guest_reviews.each do |review|
+      review.user_id = current_user.id
+      review.save!
+    end
+
+    #has_many :ratings
+    guest_ratings = guest_user.ratings_given.all
+    guest_ratings.each do |rating|
+      rating.rater_id = current_user.id
+      rating.save!
+    end
+
+    #has_one :attachment
+    attachment = guest_user.attachment
+    if attachment
+      attachment.attachable_id = current_user.id
+      attachment.save!
+    end
   end
 
   def create_guest_user

@@ -24,6 +24,7 @@
   Current User Id :: <%= current_or_guest_user.id %>
   <% if current_user? %>
     <%= link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter) %>
+    <%= link_to "Sign in with facebook", user_omniauth_authorize_path(:facebook) %>
   <% else %>
     <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
   <% end %>
