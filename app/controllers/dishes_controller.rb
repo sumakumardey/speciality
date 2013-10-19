@@ -15,6 +15,8 @@ class DishesController < ApplicationController
 	# GET /dishes/1.json
 	def show
 		@dish = Dish.find(params[:id])
+    @reviews = @dish.reviews.all
+    @new_review = @dish.reviews.new
 
 		respond_to do |format|
 			format.html # show.html.erb

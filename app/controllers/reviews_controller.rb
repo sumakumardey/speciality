@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
+  before_filter :load_dish
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = @dish.reviews.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    @review = Review.find(params[:id])
+    @review = @dish.reviews.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +25,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   # GET /reviews/new.json
   def new
-    @review = Review.new
+    @review = @dish.reviews.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,29 +35,29 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    @review = Review.find(params[:id])
+    @review = @dish.reviews.find(params[:id])
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(params[:review])
+    @review = current_or_guest_user.reviews.new(params[:review])
+    @review.dish = @dish
+    if @review.save
+      flash[:notice] = "The review has been added."
+    else
+      flash[:notice] = "Something went wrong."
+    end
 
     respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render json: @review, status: :created, location: @review }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+      format.js
     end
   end
 
   # PUT /reviews/1
   # PUT /reviews/1.json
   def update
-    @review = Review.find(params[:id])
+    @review = current_or_guest_user.reviews.find(params[:id])
 
     respond_to do |format|
       if @review.update_attributes(params[:review])
@@ -72,12 +73,22 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
-    @review = Review.find(params[:id])
+    @review = @dish.reviews.find(params[:id])
     @review.destroy
 
     respond_to do |format|
       format.html { redirect_to reviews_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def load_dish
+    @dish = Dish.find(params[cname][:dish_id])
+  end
+
+  def cname
+    @cname ||= controller_path.gsub('/', '-').singularize
   end
 end

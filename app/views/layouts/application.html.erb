@@ -14,6 +14,12 @@
 	<![endif]-->
 </head>
 <body>
+  <%= render partial: "layouts/header" %>
+  <div id="flash">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+  </div>
   Current User :: <%= current_or_guest_user.name %>
   Current User Id :: <%= current_or_guest_user.id %>
   <% if current_user? %>
