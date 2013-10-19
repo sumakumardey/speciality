@@ -8,13 +8,13 @@ module ApplicationHelper
 
   def rating_average(dish)
     content_tag :div, :class => "ratings_average"  do
-      "#{(dish.awesomeness_average || {})[:avg]} / 5"
+      "#{dish.avg_ratings.to_i} / 5"
     end
   end
 
   def awesomeness_qty(dish)
     content_tag :span, :class => "no_of_people_rated" do
-      "#{(dish.awesomeness_average || {})[:qty]}"
+      "#{dish.no_of_ratings.to_i}"
     end
   end
 
