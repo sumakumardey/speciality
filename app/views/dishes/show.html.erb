@@ -36,6 +36,11 @@
 </p>
 
 <p>
+  <b>Image</b>
+  <%= image_tag dish_show_image_path(@dish.id) %>
+</p>
+
+<p>
   <b>Awesomeness:</b>
   <%= rating_stars(@dish) %> <%= rating_average(@dish) %>
   No of people who rated : <%= awesomeness_qty(@dish) %>

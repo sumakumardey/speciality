@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 	belongs_to :location
 	has_many :dishes
 	has_many :reviews
-
+  has_one :attachment, :as => :attachable, :dependent => :destroy
 	letsrate_rater
 
 	def self.find_for_twitter_oauth(auth, signed_in_resource=nil)

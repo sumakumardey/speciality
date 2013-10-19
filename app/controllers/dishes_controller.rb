@@ -24,6 +24,12 @@ class DishesController < ApplicationController
 		end
 	end
 
+  def show_image
+    @dish = Dish.find(params[:dish_id])
+    send_data @dish.attachment.avatar.file_contents(:small), 
+      :type => 'image/png', :disposition => 'inline'
+  end
+
 	# GET /dishes/new
 	# GET /dishes/new.json
 	def new
@@ -43,7 +49,9 @@ class DishesController < ApplicationController
 	# POST /dishes
 	# POST /dishes.json
 	def create
+    attachment = params[cname].delete(:attachment)
 		@dish = current_or_guest_user.dishes.build(params[cname])
+    @dish.build_attachment(:avatar => attachment)
     @dish.restaurant = @restaurant
 
 		respond_to do |format|

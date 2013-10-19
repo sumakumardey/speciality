@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/patshaughnessy/paperclip.git
+  revision: 89d53623028a7f1f74cdc2726110486ada0061f9
+  specs:
+    paperclip (2.4.5)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
+
+GIT
   remote: git://github.com/robban/letsrate.git
   revision: 543224f40e17d413c7a7ce06cc3547bf9f56a86a
   branch: add_possibility_to_rerate
@@ -52,6 +62,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cocaine (0.3.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -195,6 +206,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 2.15)
   capybara
+  cocaine (= 0.3.2)
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
@@ -202,6 +214,7 @@ DEPENDENCIES
   mysql2 (= 0.3.13)
   omniauth
   omniauth-twitter
+  paperclip!
   rails (= 3.2.8)
   rspec-rails
   sass-rails (~> 3.2.3)

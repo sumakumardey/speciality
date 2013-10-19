@@ -13,7 +13,8 @@ gem 'letsrate', :git => 'git://github.com/robban/letsrate.git', :branch => :add_
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'cocaine','0.3.2'
+gem 'paperclip', :git => 'git://github.com/patshaughnessy/paperclip.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

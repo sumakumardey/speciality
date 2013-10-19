@@ -13,6 +13,9 @@ class Dish < ActiveRecord::Base
 	delegate :name, :to => :restaurant, :allow_nil => true, :prefix => true
   letsrate_rateable "awesomeness"
 
+  has_one :attachment, :as => :attachable, :dependent => :destroy
+
+
 	scope :search_import,includes([:tag_dishes,:tags])
 	def search_data
 		{

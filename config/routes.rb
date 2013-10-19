@@ -20,7 +20,9 @@ Speciality::Application.routes.draw do
     end
   end
 
-  resources :dishes
+  resources :dishes do
+    get :show_image
+  end
 
 
   # The priority is based upon order of creation:
