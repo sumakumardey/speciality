@@ -5,7 +5,11 @@ Speciality::Application.routes.draw do
 
   resources :reviews
 
-  resources :tags
+  resources :tags do
+    collection do
+      get :search
+    end
+  end
 
   resources :restaurants
 
