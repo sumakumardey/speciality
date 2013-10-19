@@ -1,6 +1,6 @@
 class Dish < ActiveRecord::Base
 	searchkick autocomplete: ['name']
-	attr_accessible :avg_points, :description, :location_id, :name, :no_of_ratings, :restaurant_id, :user_id
+	attr_accessible :avg_ratings, :description, :location_id, :name, :no_of_ratings, :restaurant_id, :user_id
 	belongs_to :user
 	belongs_to :location
 	belongs_to :restaurant

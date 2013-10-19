@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.integer  "location_id"
     t.text     "description"
     t.integer  "restaurant_id"
-    t.integer  "avg_points"
+    t.float    "avg_ratings"
     t.integer  "no_of_ratings"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false

@@ -8,7 +8,7 @@ describe "dishes/show" do
       :location_id => 2,
       :description => "MyText",
       :restaurant_id => 3,
-      :avg_points => 4,
+      :avg_ratings => 4,
       :no_of_ratings => 5
     ))
   end
