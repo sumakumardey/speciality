@@ -10,20 +10,24 @@ $(function(){
 			return $(this).attr('data-star-count')
 		},
 		click: function(score, evt) {
-				$.post('<%= Rails.application.class.routes.url_helpers.rate_path %>',
-					{
+				$.ajax({
+					url : '<%= Rails.application.class.routes.url_helpers.rate_path %>',
+					data :{
 						score: score,
 						dimension: $(this).attr('data-dimension'),
 						id: $(this).attr('data-id'),
 						klass: $(this).attr('data-classname')
 					},
-					function(data) {
+					headers: {
+						'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+					},
+					success: function(data) {
 						if(data) {
 							$('.ratings_average').html(data.avg + ' / 5');
 							$('.no_of_people_rated').html(data.qty);
 						}
 					}
-				);
+				});
 		}
 	});
 });
