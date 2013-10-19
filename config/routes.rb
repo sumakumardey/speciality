@@ -3,7 +3,9 @@ Speciality::Application.routes.draw do
     :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   match '/rate' => 'rater#create', :as => 'rate'
-
+  match 'dish_autocompleter' => "home#dish_autocompleter"
+  match 'tag_autocompleter' => "home#tag_autocompleter"
+  match 'place_autocompleter' => "home#place_autocompleter"
   resources :locations
 
   resources :reviews

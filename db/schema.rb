@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.string   "country"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "address"
   end
 
   create_table "rates", :force => true do |t|
