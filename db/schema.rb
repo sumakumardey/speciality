@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "searches", :force => true do |t|
+    t.string   "query"
+    t.integer  "item_id"
+    t.datetime "searched_at"
+    t.datetime "converted_at"
+  end
+
   create_table "tag_dishes", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "dish_id"
@@ -98,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.integer  "no_of_reviews"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
+    t.string   "email",                  :default => ""
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -108,9 +115,10 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

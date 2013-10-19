@@ -1,0 +1,17 @@
+development:
+  twitter:
+    consumer_token: fqv5i8ShjadBtZTYKVIcGA
+    consumer_secret: hWaHP2zf92C2LIjtJRjZ85cgYfrXIwMZ2chm8A8
+
+  google_oauth2:
+    consumer_token: 623255701486.apps.googleusercontent.com
+    consumer_secret: aKw_b0TKyDwZbrR9CdlgfE87
+
+production:
+  twitter:
+    consumer_token: 2SLF5CA8hhP5sd70BwQ
+    consumer_secret: D0ClXbRFyqfYLATZ320aKTCRzW73QaFBM9jLyY9izq4
+
+  google_oauth2:
+    consumer_token: 195634840629.apps.googleusercontent.com
+    consumer_secret: ViOwuomoCqT9tYZvv9Bz15lk

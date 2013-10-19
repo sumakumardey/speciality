@@ -1,4 +1,7 @@
 Speciality::Application.routes.draw do
+  devise_for :users,
+    :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
   match '/rate' => 'rater#create', :as => 'rate'
 
   resources :locations
@@ -15,9 +18,6 @@ Speciality::Application.routes.draw do
 
   resources :dishes
 
-  devise_for :users
-
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
