@@ -56,7 +56,7 @@ class HomeController < ApplicationController
 		
 		def compute_trending_tags
 			@tags = @dishes.map(&:tags).reject(&:blank?).flatten.uniq
-			list = @tags.map { |tag| [tag, tag.dishes.sum(&:total_ratings)] }
+			list = @tags.map { |tag| [tag, @dishes.select{ |dish| dish.tags.include? tag }.sum(&:total_ratings)] }
 			@trending_tags_array = list.sort_by(&:last).reverse[0..3]
 		end
 		

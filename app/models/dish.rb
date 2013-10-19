@@ -21,7 +21,7 @@ class Dish < ActiveRecord::Base
 	scope :find_recent_items, lambda { |items|
 		order("created_at DESC").limit(items)
 	}
-	scope :include_tags, includes([:tags])
+	scope :include_tags, includes([:tags, :restaurant])
 	def search_data
 		{
 			tag: tags.collect(&:name),
