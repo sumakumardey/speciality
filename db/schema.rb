@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "searches", :force => true do |t|
+    t.string   "query"
+    t.integer  "item_id"
+    t.datetime "searched_at"
+    t.datetime "converted_at"
+  end
+
   create_table "tag_dishes", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "dish_id"
