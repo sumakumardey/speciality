@@ -9,6 +9,8 @@ class Dish < ActiveRecord::Base
 	has_many :tags, :through => :tag_dishes
 	has_many :searches
 
+  letsrate_rateable "awesomeness"
+
 	scope :search_import,includes([:tag_dishes,:tags])
 	def search_data
 		{

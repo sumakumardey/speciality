@@ -21,8 +21,8 @@
 </p>
 
 <p>
-  <b>Restaurent:</b>
-  <%= @dish.restaurent_id %>
+  <b>Restaurant:</b>
+  <%= @dish.restaurant_id %>
 </p>
 
 <p>
@@ -35,6 +35,11 @@
   <%= @dish.no_of_ratings %>
 </p>
 
+<p>
+  <b>Awesomeness:</b>
+  <%= rating_stars(@dish) %> <%= rating_average(@dish) %>
+  <%= awesomeness_qty(@dish) %>
+</p>
 
 <%= link_to 'Edit', edit_dish_path(@dish) %> |
 <%= link_to 'Back', dishes_path %>

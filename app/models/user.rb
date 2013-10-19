@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :reviews
 
+  letsrate_rater
+
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user

@@ -8,7 +8,7 @@ describe "dishes/index" do
         :user_id => 1,
         :location_id => 2,
         :description => "MyText",
-        :restaurent_id => 3,
+        :restaurant_id => 3,
         :avg_points => 4,
         :no_of_ratings => 5
       ),
@@ -17,7 +17,7 @@ describe "dishes/index" do
         :user_id => 1,
         :location_id => 2,
         :description => "MyText",
-        :restaurent_id => 3,
+        :restaurant_id => 3,
         :avg_points => 4,
         :no_of_ratings => 5
       )
