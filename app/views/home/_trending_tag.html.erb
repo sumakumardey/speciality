@@ -10,9 +10,9 @@
 	</div>
 	<div class="back_component">
 		<div class="back_component_first">
-			<p class="back_component_first_heading text-center"><%= dish.name.camelcase %></p>
+			<p class="back_component_first_heading text-center"><%= dish.name.to_s.camelcase %></p>
 			<p class="back_component_first_content text-center">
-				<%= dish.restaurant_name.camelcase %></p>
+				<%= dish.restaurant_name.to_s.camelcase %></p>
 		</div>
 		<div class="back_component_color">
 			<p class="back_component_content"><span class="glyphicon glyphicon-heart icon_size"></span><%= dish.avg_ratings || 0.0 %></p>
