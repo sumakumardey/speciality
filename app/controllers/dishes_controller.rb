@@ -68,7 +68,9 @@ class DishesController < ApplicationController
 	# PUT /dishes/1
 	# PUT /dishes/1.json
 	def update
+		attachment = params[cname].delete(:attachment)
 		@dish = current_or_guest_user.dishes.find(params[:id])
+		@dish.build_attachment(:avatar => attachment)
 		@dish.restaurant = @restaurant
 		respond_to do |format|
 			if @dish.update_attributes(params[:dish])
