@@ -7,6 +7,8 @@ gem 'searchkick'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
 gem 'letsrate', :git => 'git://github.com/robban/letsrate.git', :branch => :add_possibility_to_rerate
 
 # Bundle edge Rails instead:

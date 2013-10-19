@@ -7,6 +7,10 @@ development:
     consumer_token: 623255701486.apps.googleusercontent.com
     consumer_secret: aKw_b0TKyDwZbrR9CdlgfE87
 
+  facebook:
+    consumer_token: 234706103365655
+    consumer_secret: f127e7f3344c2709a204b228effac306
+
 production:
   twitter:
     consumer_token: 2SLF5CA8hhP5sd70BwQ
@@ -15,3 +19,7 @@ production:
   google_oauth2:
     consumer_token: 195634840629.apps.googleusercontent.com
     consumer_secret: ViOwuomoCqT9tYZvv9Bz15lk
+
+  facebook:
+    consumer_token: 234706103365655
+    consumer_secret: f127e7f3344c2709a204b228effac306
