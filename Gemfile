@@ -3,7 +3,11 @@ source 'https://rubygems.org'
 gem 'capistrano', '~> 2.15'
 gem 'rails', '3.2.8'
 gem 'mysql2','0.3.13'
-gem "searchkick"
+gem 'searchkick'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -24,6 +28,11 @@ end
 
 group :production do
 	gem 'therubyracer','0.12.0'
+end
+
+group :development do
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 gem 'jquery-rails'
