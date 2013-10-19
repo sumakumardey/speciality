@@ -15,6 +15,7 @@
 </head>
 <body>
   Current User :: <%= current_or_guest_user.name %>
+  Current User Id :: <%= current_or_guest_user.id %>
   <% if current_user? %>
     <%= link_to "Sign in with twitter", user_omniauth_authorize_path(:twitter) %>
   <% else %>
