@@ -60,7 +60,7 @@ var searchTag,
 						data.push({id: this, text: this});
 					});
 				}
-
+	
 				callback(data);
 			}
 		});

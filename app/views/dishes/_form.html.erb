@@ -1,50 +1,50 @@
 <%= form_for(@dish) do |f| %>
-  <% if @dish.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@dish.errors.count, "error") %> prohibited this dish from being saved:</h2>
+	<% if @dish.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@dish.errors.count, "error") %> prohibited this dish from being saved:</h2>
 
-      <ul>
-      <% @dish.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		<ul>
+			<% @dish.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <br/>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <br/>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <%= render :partial =>"/locations/form" %>
-  <div class="field">
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<br/>
+	<div class="field">
+		<%= f.label :user_id %><br />
+		<%= f.number_field :user_id %>
+	</div>
+	<br/>
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</div>
+	<%= render :partial =>"/locations/form" %>
+	<div class="field">
 		<%= f.label :restaurant_name %><br />
 		<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete",
-				:'data-id' => @dish.restaurant_id, :'data-text' => @dish.restaurant_name  %>
-  </div>
-  <br/>
+		:'data-id' => @dish.restaurant_id, :'data-text' => @dish.restaurant_name  %>
+	</div>
+	<br/>
 	<div class="field">
 		<%= f.label :tag_names %><br />
 		<%= f.text_field :tag_names, :class => "tags_autocomplete",
-				:'data-value' => @dish.tags.map(&:name).join(","), :value => " " %>
+		:'data-value' => @dish.tags.map(&:name).join(","), :value => " " %>
 	</div>
-  <br/>
+	<br/>
 	<div class="field">
 		<%= f.label :avatar %><br />
-    <%= f.file_field :attachment %>
+		<%= f.file_field :attachment %>
 	</div>
-  <br/>
-  <br/>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<br/>
+	<br/>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
 <% end %>

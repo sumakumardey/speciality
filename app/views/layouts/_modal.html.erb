@@ -1,3 +1,4 @@
+<% @new_dish = Dish.new %>
 <div class="modal fade" id="new_item_modal">
 		<div class="modal-dialog ">
 			<div class="modal-content add_item_container">
@@ -6,35 +7,59 @@
 					<p class="new-item-heading">Add a new item to Speciality</p>
 				</div>
 				<div class="modal-body">
-					<div class="col-lg-4 new_item_image_container">
-							<h5 style="text-align:center;">PHOTO</h5> 
-							<img src="<%= asset_path 'default-new-item.png' %>" class="new_item_image">
-							<button type="button" class="btn btn-success new_item_upload_button">Upload</button>
-					</div>
-					<div class="col-lg-8 new_item_details_container">
-							 <form role="form" class="new_item_form">
+					<%= form_for(@new_dish) do |f| %>
+						<% if @new_dish.errors.any? %>
+						<div id="error_explanation">
+							<h2>
+								<%= pluralize(@new_dish.errors.count, "error") %> prohibited this dish from being saved:</h2>
+							<ul>
+								<% @new_dish.errors.full_messages.each do |msg| %>
+									<li><%= msg %></li>
+								<% end %>
+							</ul>
+						</div>
+						<% end %>
+						<div class="col-lg-4 new_item_image_container">
+								<h5 style="text-align:center;">PHOTO</h5> 
+								<img src="<%= asset_path 'default-new-item.png' %>" class="new_item_image">
+								<%= f.file_field :attachment, :class => "btn btn-success new_item_upload_button" %>
+								<!-- <button type="button" class="btn btn-success new_item_upload_button">Upload</button> -->
+						</div>
+						<div class="col-lg-8 new_item_details_container">
 								<div class="form-group">
-									<label for="exampleInputEmail1">Email address</label>
-									<input type="email" class="form-control new_item_form_input " id="exampleInputEmail1" placeholder="Enter email">
+									<%= f.label :name %><br />
+									<%= f.text_field :name, :class=>"form-control new_item_form_input" %>
 								</div>
 								<div class="form-group">
 									<label for="exampleInputEmail1">Email address</label>
 									<input type="email" class="form-control new_item_form_input " id="exampleInputEmail2" placeholder="Enter email">
 								</div>
-							</form>
-							
-							<div class="form-group">
-									<label for="exampleInputEmail1">Email address</label>
-									<br>
-									<textarea class="new_item_txt" ></textarea>
+								<div class="form-group">
+									<%= f.label :description %><br />
+									<%= f.text_area :description, :class=>"new_item_txt" %>
 								</div>
-							</form>
+								<div class="form-group">
+									<%= render :partial =>"/locations/form" %>
+								</div>
+								<div class="form-group">
+									<%= f.label :restaurant_name %><br />
+									<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete",
+									:'data-id' => @new_dish.restaurant_id, :'data-text' => @new_dish.restaurant_name  %>
+								</div>
+								<br/>
+								<div class="form-group">
+									<%= f.label :tag_names %><br />
+									<%= f.text_field :tag_names, :class => "tags_autocomplete",
+									:'data-value' => @new_dish.tags.map(&:name).join(","), :value => " " %>
+								</div>
+								<br/>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<a href="#" onclick="function(){return false;}" data-dismiss="modal">CANCEL</a>
-					<button type="button" class="btn btn-success">SUBMIT REVIEW</button>
+					<button class="btn btn-success">SUBMIT REVIEW</button>
 				</div>
+				<% end %>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
