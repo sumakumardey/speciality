@@ -479,12 +479,17 @@ body {
 
 /* line 443, ../../app/assets/stylesheets/style.css.scss.erb */
 .address_text {
-  font-size: 20px;
+ font-size: 20px;
   color: #373737;
   padding-top: 15px;
   padding-left: 12px;
+  height: 43px;
   font-weight: 300;
   display: inline-block;
+  width: 700px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* line 453, ../../app/assets/stylesheets/style.css.scss.erb */
@@ -747,6 +752,11 @@ body {
   height: 28px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.item_restaurant > a
+{
+  color : white !important;
 }
 
 /* line 701, ../../app/assets/stylesheets/style.css.scss.erb */
