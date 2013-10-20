@@ -172,13 +172,13 @@ for (var text in NO_RESULT_TEXT) {
 			window.location = '/search?search%5B' + SEARCH_TYPE_MAPPING[dataset] + '%5D=' + datum.value;
 		});
 
-		$('.front_component').mouseenter(function () {
+		$('.front_component').live('mouseenter', function () {
 			var parent = $(this).parent();
 			$(this).fadeOut(100, function () { 
 				parent.find('.back_component').fadeIn(100);
 			});
 		});
-		$('.back_component').mouseleave(function () {
+		$('.back_component').live('mouseleave', function () {
 			var parent = $(this).parent();
 			$(this).fadeOut(100, function () {
 				parent.find('.front_component').fadeIn(100); 
