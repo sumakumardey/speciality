@@ -9,7 +9,7 @@
 				<div class="item_same_line item_main_info">
 					<div class="item_description_div">
 						<p class="item_title"><%= @dish.name %></p>
-						<p class="item_restaurant"><%= @dish.restaurant_name %></p>
+						<p class="item_restaurant"><%= link_to @dish.restaurant_name, restaurant_path(@dish.restaurant) %></p>
 						<p class="item_description_content"><%= @dish.description %></p>
 						<div class="dish_info_footer">
 							<div class="item_same_line_info">
