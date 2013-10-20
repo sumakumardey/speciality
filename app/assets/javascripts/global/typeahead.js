@@ -687,7 +687,7 @@
     }();
     var DropdownView = function() {
         var html = {
-            suggestionsList: '<span class="tt-suggestions"></span>'
+            suggestionsList: '<div class="tt-suggestions"></div>'
         }, css = {
             suggestionsList: {
                 display: "block"

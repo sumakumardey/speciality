@@ -110,11 +110,11 @@ var searchTag,
 			remote: {
 				url: '/dish_autocompleter/?search=%QUERY',
 				filter: function(response){
-					return response.dishes.data;
+					return response.dishes.data.length ? response.dishes.data : ["No dishes found"] ;
 				},
 				cache: false
 			},
-			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">ITEMS</h5></div>',
+			header: '<div class="section-title" ><h5 style="text-align : center;color:#838383;">ITEMS</h5></div>',
 			template: '<p>{{ value }}</p>',
 			engine: MyEngine,
 			timeout: 1000
@@ -124,11 +124,11 @@ var searchTag,
 			remote: {
 				url: '/tag_autocompleter/?search=%QUERY',
 				filter: function(response){
-					return response.tags.data;
+					return response.tags.data.length ? response.tags.data : ["No tags found"] ;
 				},
 				cache: false
 			},
-			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">TAGS</h5></div>',
+			header: '<div class="section-title" ><h5 style="text-align : center;color:#838383;">TAGS</h5></div>',
 			template: '<p>{{ value }}</p>',
 			engine: MyEngine,
 			timeout: 1000
@@ -138,11 +138,11 @@ var searchTag,
 			remote: {
 				url: '/place_autocompleter/?search=%QUERY',
 				filter: function (response) {
-					return response.places.data;
+					return response.places.data.length ? response.places.data : ["No place found"] ;
 				},
 				cache: false
 			},
-			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">PLACES</h5></div>',
+			header: '<div class="section-title"><h5 style="text-align : center;color:#838383;">PLACES</h5></div>',
 			template: '<p>{{ value }}</p>',
 			engine: MyEngine,
 			timeout: 1000

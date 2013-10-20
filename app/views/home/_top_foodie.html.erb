@@ -1,4 +1,4 @@
-<div class="col-md-3 component_front component_margin_right component_margin_bottom">
+<div class="col-md-3 component_front <%= ((top_foodie_counter % 4) == 3) ? "" : "component_margin_right" %> component_margin_bottom ">
     <%= foodie_profile_image(top_foodie[0], "top_foodie", "img-circle foodies") %>
     <p class="foodie_name text-center"><%= top_foodie[0].name %></p>
     <p class="foodie_points text-center"><%= top_foodie[1] %></p>
