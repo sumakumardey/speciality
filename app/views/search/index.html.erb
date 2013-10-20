@@ -33,19 +33,14 @@
 			<div class="row_search_page col-lg-6 filter_option_selector_container">
 				<p class="popular_tags_title">Popular Tags</p>
 				<div class="popular_tags"> 
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-
+					<% @trending_tags_array.each do|tags_array| %>
+						<span class="popular_tag <%="active" if @tags.include? tags_array[0].name %>">
+							<%= tags_array[0].name %>
+						</span>
+					<% end %>
+				</div>
+				<div>
+						<input class="tags_autocomplete tags_filter_autocomplete single-input-hack new_item_form_input">
 				</div>
 			</div>
 			<div class="row_search_page col-lg-6 filter_option_selector_container">
@@ -54,10 +49,13 @@
 				<div> 
 					<span>Rs </span><span id="range_value">50</span>
 				</div>
-
+				<div>
+					<input class="single-input-hack new_item_form_input" id="searchAutocomplete">
+				</div>
 			</div>
-	<div class="col-lg-9 search_tag_list_container">
-		You are currently looking for <span class="badge" id="search_list_tag">dfisldfsd</span><span class="badge" id="search_list_cost">100</span> <span class="badge" id="search_list_dist">adyar</span>  
+
+	<div class="col-lg-9 search_tag_list_container filter-tag-list">
+		You are currently looking for  
 	</div>
 
 		<div class="col-lg-12 search_dish_container">
@@ -91,16 +89,17 @@
 		addTag('<%= @tags %>', true);
 		$('#range').change(function()
 		{
-			console.log('The value os ');
 			$('#range_value').html($(this).val());
+			setCost($(this).val());
 		})
 		$('.popular_tag').click(function () {
 			var $this = $(this);
-			$this.toggleClass("active");
+				$this.toggleClass("active"),
+				text = $this.text().trim();
 			if ($this.hasClass("active")) {
-				console.log('selected' + $this.val());
+				addTag(text);
 			} else {
-				console.log('unselected' + $this.val());
+				removeTag(text);
 			}
 		})
 	});
