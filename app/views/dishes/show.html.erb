@@ -32,13 +32,6 @@
 								<span class="info_poster">WRITE A REVIEW </span>
 								<span class="info_poster_name" style="margin-left:40px;margin-right:20px;"><%= @dish.reviews.count%> SO FAR</span>
 							</div>
-              <% if @dish.user == current_or_guest_user %>
-                <div class="black_box">
-                  <span class="info_poster">Edit Dish </span>
-                  <span class="info_poster_name" style="margin-left:40px;margin-right:20px;">
-                    <%= link_to "Edit Dish", edit_dish_path(@dish), :class => "btn btn-danger header_btn", :id => "edit_dish" %>
-                </div>
-              <% end %>
 						</div>
 					</div>
 					<div class="item_properties_div">
@@ -51,6 +44,11 @@
 						<div class="item_description_div_cost">
 							<p class="item_description_div_cost_value"> $ <%=@dish.cost || 0%>  </p>
 						</div>
+						<% if @dish.user ==current_user %>
+							<div class="item_description_div_cost_edit">
+								<p class="item_description_div_cost_value"> <%= link_to "Edit Dish", edit_dish_path(@dish), :class => "btn btn-danger header_btn", :id => "edit_dish" %> </p>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			</div>  
