@@ -76,15 +76,15 @@ class DishesController < ApplicationController
 		@dish = current_or_guest_user.dishes.find(params[:id])
 		@dish.build_attachment(:avatar => attachment) unless attachment.blank?
 		@dish.restaurant = @restaurant
+    
 		respond_to do |format|
 			if @dish.update_attributes(params[:dish])
-				format.html { redirect_to @dish, notice: 'Dish was successfully updated.' }
-				format.json { head :no_content }
+				format.json { render json: @dish.id }
 			else
-				format.html { render action: "edit" }
 				format.json { render json: @dish.errors, status: :unprocessable_entity }
 			end
 		end
+    
 	end
 
 	# DELETE /dishes/1

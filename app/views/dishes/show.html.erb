@@ -1,6 +1,6 @@
 <%= javascript_include_tag :dishes %>
 <div class="container container_item_page">
-	<div class="row item_info_box">
+	<div class="row item_info_box row_modify">
 		<div class="col-lg-12 section_item">
 			<div class="row row_item">
 				<div class="item_same_line">
@@ -32,6 +32,13 @@
 								<span class="info_poster">WRITE A REVIEW </span>
 								<span class="info_poster_name" style="margin-left:40px;margin-right:20px;"><%= @dish.reviews.count%> SO FAR</span>
 							</div>
+              <% if @dish.user == current_or_guest_user %>
+                <div class="black_box">
+                  <span class="info_poster">Edit Dish </span>
+                  <span class="info_poster_name" style="margin-left:40px;margin-right:20px;">
+                    <%= link_to "Edit Dish", edit_dish_path(@dish), :class => "btn btn-danger header_btn", :id => "edit_dish" %>
+                </div>
+              <% end %>
 						</div>
 					</div>
 					<div class="item_properties_div">
@@ -47,7 +54,7 @@
 					</div>
 				</div>
 			</div>  
-			<div class="row row_item green_border">
+			<div class="row  row_item green_border">
 				<div class="restaurant_address">
 					<p class="address_text"><%= @dish.location_address || "Velachery" %></p>
 					<a href="#" class="right_anchor map_opener"> Show on map </a> 
@@ -61,7 +68,7 @@
         
 	</div>
 
-	<div class="row item_info_box reviews_container">
+	<div class="row item_info_box row_modify reviews_container">
 		<div class="col-lg-12 reviews_top_bar">
 			<p class="address_text"><%= @dish.location_address || "Velachery" %></p>
 			<a href="#" class="right_anchor write_review"> Write review </a> 
