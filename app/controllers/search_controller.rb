@@ -5,8 +5,8 @@ class SearchController < ApplicationController
 		@data = []
 		flag = false
 		(params[:search] || {}).each_pair do |search_filter, search_value|
-			next unless allowed_filters.include?(search_filter.to_sym)
-			if flag && search_value.present?
+			next if !allowed_filters.include?(search_filter.to_sym) || search_value.blank?
+			if flag 
 				@data = @data & self.send("search_with_#{search_filter}")
 			else
 				@data = self.send("search_with_#{search_filter}")
@@ -14,7 +14,6 @@ class SearchController < ApplicationController
 			end
 		end
 		@dishes = Dish.find_all_by_id(@data) unless @data.blank?
-
 		respond_to do |format|
 			format.js {  }
 			format.html {  }
@@ -25,6 +24,7 @@ class SearchController < ApplicationController
 	private
 
 	def search_with_tags
+		@tags = params[:search][:tags]
 		Dish.search("#{params[:search][:tags]}", fields:[:tag],partial:true).collect(&:id)
 	end
 
