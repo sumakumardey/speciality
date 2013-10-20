@@ -17,11 +17,11 @@ class Dish < ActiveRecord::Base
   has_one :attachment, :as => :attachable, :dependent => :destroy
 
 
-	scope :search_import,includes([:tag_dishes,:tags])
+	scope :search_import,includes([:tag_dishes,:tags, :location])
 	scope :find_recent_dishes, lambda { |items|
 		order("created_at DESC").limit(items)
 	}
-	scope :include_tags, includes([:tags, :restaurant,:location])
+	scope :include_tags, includes([:tags, :restaurant])
 	def search_data
 		{
 			tag: tags.collect(&:name),
