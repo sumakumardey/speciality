@@ -128,7 +128,7 @@ var searchTag,
 				},
 				cache: false
 			},
-			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">TAGS</h5>/div>',
+			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">TAGS</h5></div>',
 			template: '<p>{{ value }}</p>',
 			engine: MyEngine,
 			timeout: 1000
