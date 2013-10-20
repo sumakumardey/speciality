@@ -14,7 +14,6 @@ specialitySearch = function () {
 			'search[sort]' : sort,
 		},
 		success: function (data) {
-			console.log(data);
 		}
 	});
 };
@@ -146,7 +145,7 @@ $(document).ready(function () {
 	$('.sort-dishes').on('click', function () {
 		var $this = $(this),
 			value = $this.data('value');
-			console.log(value);
+
 			setSort(value);
 	});
 	$('.tags_filter_autocomplete').on('change', function (e) {
@@ -157,15 +156,18 @@ $(document).ready(function () {
 		}
 		
 	});
-	var searchautocomplete = new google.maps.places.Autocomplete(
-		/** @type {HTMLInputElement} */(document.getElementById('searchAutocomplete')),
-		{ types: ['geocode'] });
-	// When the user selects an address from the dropdown,
-	// populate the address fields in the form.
-	google.maps.event.addListener(searchautocomplete, 'place_changed', function(e) {
-		var value = $('#searchAutocomplete').val();
-		setLocation(value);
-	});
-	
+	if ($('#searchAutocomplete').length) {
+		var searchautocomplete = new google.maps.places.Autocomplete(
+			/** @type {HTMLInputElement} */(document.getElementById('searchAutocomplete')),
+			{ types: ['geocode'] });
+		// When the user selects an address from the dropdown,
+		// populate the address fields in the form.
+		google.maps.event.addListener(searchautocomplete, 'place_changed', function(e) {
+		
+				var value = $('#searchAutocomplete').val();
+				setLocation(value);
+
+		});
+	}	
 	
 });
