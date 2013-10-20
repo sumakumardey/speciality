@@ -19,32 +19,40 @@
 					<a href="#" id="current_city" >San Fransisco</a>
 				</li>
 				<li>
-          <%= link_to "Discover", search_path %>
+					<%= link_to "Discover", search_path %>
 				</li>
 				<li class="navbar_list">
 					<%= link_to "Add Dish", new_dish_path, :class => "btn btn-danger header_btn", :id => "add_dish" %>
 				</li>
 				<li class="navbar_list">
-
 					<div class="dropdown">
-						<%= link_to "My Account", "#", :class => "btn btn-danger", :id => "login" , :'data-toggle' => "dropdown" %>
-                              	 <% if current_user?%> 
-                              	 <ul class="dropdown-menu dropdown-menu-home-logged-out" role="menu" aria-labelledby="dLabel">
-	                              	 <li><a href="/users/auth/facebook" class="facebook"><img src="<%= asset_path 'login-facebook-icon.png' %>"><span style="padding-left:20px;">Sign in with facebook</span></a></li>
-	                                <li><a href="/users/auth/twitter" class="twitter"><img src="<%= asset_path 'login-twitter-icon.png' %>"><span style="padding-left:20px;">Sign in with Twitter</span></a></li>
-	                               </ul>
-								  <% else %>
-								  <ul class="dropdown-menu dropdown-menu-home-logged-in" role="menu" aria-labelledby="dLabel">
-								  	<li><%= link_to "My Dishes", user_path(current_or_guest_user) + "#items", :class =>"header_my_dishes"  %></li>
-	                              	 <li><%= link_to "My Reviews", user_path(current_or_guest_user) + "#reviews", :class =>"header_my_reviews"  %></li>
-	                              	 <li><%= link_to "Log out", destroy_user_session_path, :method => :delete ,:class =>"header_my_logout"  %></li>
-	                               </ul>
-								    
-								  <% end %>     
-                              
-                    </div>
+						<%= link_to current_user? ? "Guest User" : "My Account", "#", :class => "btn btn-danger", :id => "my-account" , :'data-toggle' => "dropdown" %>
+						<ul class="dropdown-menu dropdown-menu-home-logged-out" role="menu" aria-labelledby="dLabel">
+							<li><%= link_to "My Dishes", user_path(current_or_guest_user) + "#items", :class =>"header_my_dishes"  %></li>
+							<li><%= link_to "My Reviews", user_path(current_or_guest_user) + "#reviews", :class =>"header_my_reviews"  %></li>
+							<% unless current_user?%> 
+								<li><%= link_to "Log out", destroy_user_session_path, :method => :delete ,:class =>"header_my_logout"  %></li>
+							<% end %>
+						</ul>
+					</div>
 					
 				</li>
+				<% if current_user? %> 
+					<li class="navbar_list">
+
+						<div class="dropdown">
+							<%= link_to "Login", "#", :class => "btn btn-danger", :id => "login" , :'data-toggle' => "dropdown" %>
+						
+							<ul class="dropdown-menu dropdown-menu-home-logged-out" role="menu" aria-labelledby="dLabel">
+								<li><a href="/users/auth/facebook" class="facebook"><img src="<%= asset_path 'login-facebook-icon.png' %>"><span style="padding-left:20px;">Sign in with facebook</span></a></li>
+								<li><a href="/users/auth/twitter" class="twitter"><img src="<%= asset_path 'login-twitter-icon.png' %>"><span style="padding-left:20px;">Sign in with Twitter</span></a></li>
+							</ul>
+						
+						</div>
+					
+					</li>
+				<% end %> 
+				
 			</ul>
 		</div>
 	</div>
