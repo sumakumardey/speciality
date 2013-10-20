@@ -26,7 +26,7 @@
 				</li>
 				<li class="navbar_list">
 					<div class="dropdown">
-						<%= link_to "My Account", "#", :class => "btn btn-danger", :id => "my-account" , :'data-toggle' => "dropdown" %>
+						<%= link_to current_user? ? "Guest User" : "My Account", "#", :class => "btn btn-danger", :id => "my-account" , :'data-toggle' => "dropdown" %>
 						<ul class="dropdown-menu dropdown-menu-home-logged-out" role="menu" aria-labelledby="dLabel">
 							<li><%= link_to "My Dishes", user_path(current_or_guest_user) + "#items", :class =>"header_my_dishes"  %></li>
 							<li><%= link_to "My Reviews", user_path(current_or_guest_user) + "#reviews", :class =>"header_my_reviews"  %></li>
@@ -37,20 +37,21 @@
 					</div>
 					
 				</li>
-				<li class="navbar_list">
+				<% if current_user? %> 
+					<li class="navbar_list">
 
-					<div class="dropdown">
-						<%= link_to "Guest User!", "#", :class => "btn btn-danger", :id => "login" , :'data-toggle' => "dropdown" %>
-						<% if current_user?%> 
+						<div class="dropdown">
+							<%= link_to "Login", "#", :class => "btn btn-danger", :id => "login" , :'data-toggle' => "dropdown" %>
+						
 							<ul class="dropdown-menu dropdown-menu-home-logged-out" role="menu" aria-labelledby="dLabel">
 								<li><a href="/users/auth/facebook" class="facebook"><img src="<%= asset_path 'login-facebook-icon.png' %>"><span style="padding-left:20px;">Sign in with facebook</span></a></li>
 								<li><a href="/users/auth/twitter" class="twitter"><img src="<%= asset_path 'login-twitter-icon.png' %>"><span style="padding-left:20px;">Sign in with Twitter</span></a></li>
 							</ul>
-						<% end %> 
-					</div>
+						
+						</div>
 					
-				</li>
-				
+					</li>
+				<% end %> 
 				
 			</ul>
 		</div>
