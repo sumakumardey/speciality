@@ -20,7 +20,9 @@
 							<div class="item_same_line_info">
 								<span class="info_poster">Tags : </span>
 								<% (@dish.tags || []).each do |tag| %>
-								<span class="info_poster_name"><%= tag.name %></span>
+								<span class="info_poster_name">
+                  <%= link_to tag.name.camelcase, search_path('search[tags]' => tag.name)%>
+                </span>
 								<% end %>
 							</div>
 							<div class=" black_box black_box_margin">
