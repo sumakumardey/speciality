@@ -42,6 +42,10 @@
 									<%= f.text_area :description, :class=>"new_item_txt" %>
 								</div>
 								<div class="form-group">
+									<%= f.label :price %>
+									<%= f.text_field :cost, :class=>"form-control new_item_form_input" ,:placeholder => "Enter in Dollars"%>
+								</div>
+								<div class="form-group">
 									<%= f.label :restaurant_name , :class => "restaurant_label" %><br />
 									<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete single-input-hack new_item_form_input",
 									:'data-id' => @new_dish.restaurant_id, :'data-text' => @new_dish.restaurant_name  %>
