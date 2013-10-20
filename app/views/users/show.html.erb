@@ -4,12 +4,12 @@
     <div class="row row_modify">
     <div class="col-lg-3 ">
     <%= foodie_profile_image(@user, "review", "user_profile_image ") %>
-    <span class="user_name_profile" >sdlfsd</span>
+    <span class="user_name_profile" ><%= @user.name %></span>
     </div>
     <div class="col-lg-4 col-lg-offset-4 user_stats">
-      <span id="user_rating" class="user_stats_span">14 ratings</span>
-      <span id="user_reviews" class="user_stats_span">23 reviews</span>
-      <span id="user_points" class="user_stats_span">123</span>
+      <span id="user_rating" class="user_stats_span"><%= @user.ratings_given.size %> ratings</span>
+      <span id="user_reviews" class="user_stats_span"><%= @user.reviews.size %> Reviews</span>
+      <span id="user_points" class="user_stats_span"><%= @user.calculate_score %> Points</span>
     </div>
   </div>
   </div>
