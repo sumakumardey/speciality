@@ -1,35 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container container_item_page">
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+	<div class="user_profile_page ">
+    <%= foodie_profile_image(@user, "review", "user_profile_image") %>
+    <div class="user_stats">
+      test data
+    </div>
+  </div>
 
-<p>
-  <b>Twitter:</b>
-  <%= @user.twitter_id %>
-</p>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#reviews" data-toggle="tab">Ratings / Reviews</a></li>
+    <li><a href="#items" data-toggle="tab">My Items</a></li>
+  </ul>
 
-<p>
-  <b>Facebook:</b>
-  <%= @user.facebook_id %>
-</p>
+  <br/>
+  <div class="tab-content">
+    <div class="tab-pane active" id="reviews">
+      <%= render :partial => 'home/recently_added_dish',
+        :collection => user_review_rated_dishes(@user), :as => :dish %>
+    </div>
+    <div class="tab-pane" id="items">
+      <%= render :partial => 'home/recently_added_dish',
+        :collection => @user.dishes, :as => :dish %>
+    </div>
+  </div>
 
-<p>
-  <b>Location:</b>
-  <%= @user.location_id %>
-</p>
+</div>
 
-<p>
-  <b>No of ratings:</b>
-  <%= @user.no_of_ratings %>
-</p>
-
-<p>
-  <b>No of reviews:</b>
-  <%= @user.no_of_reviews %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<script>
+  $(function() {
+    $('#myTab a:last').tab('show');
+  })
+</script>
