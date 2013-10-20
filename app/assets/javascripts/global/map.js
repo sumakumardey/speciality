@@ -38,8 +38,6 @@ function fillInAddressEdit() {
 	console.log(place);
 	document.getElementById("edit_latitude").value =  place.geometry.location["lb"];
 	document.getElementById("edit_longitude").value =  place.geometry.location["mb"];
-	// document.getElementById("edit_address").value = place.formatted_address;
-	// console.log(place.formatted_address)
 }
 function fillInAddress() {
 	// Get the place details from the autocomplete object.
