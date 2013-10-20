@@ -1,2 +1,3 @@
-$('.search_result')
-	.html("<%= escape_javascript(render :partial => 'home/recently_added_dishes', :collection => @dishes ) %>");
+$('.row_search_page_container')
+	.html("<%= escape_javascript(render :partial => 'home/recently_added_dish',
+																			:collection => @dishes, :as => :dish ) %>");

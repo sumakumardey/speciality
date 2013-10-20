@@ -47,30 +47,33 @@
 
 	<div class="row_search_page ">
 		<div class="col-lg-12 row_search_page_container">
-			
-		
+			<%= render :partial => 'home/recently_added_dish',
+																						:collection => @dishes, :as => :dish %>
 		</div>
 		</div>
 	</div>
 </div>
 
 <script>
-// $('.search_filter_slidedown').hide();
-$('.search_filter_opener').click(function()
-{
-	console.log('I am in ckick')
-	if($('.search_filter_slidedown').is(':visible'))
+	// $('.search_filter_slidedown').hide();
+	$('.search_filter_opener').click(function()
 	{
-		// var height = $('.section_item').css('height') - $('.map').css('height');
-		$('.search_filter_slidedown').slideUp();
-		console.log('I am going to slide up');
-		// $('.section_item').css('height',height);
-	}
-	else
-	{
-		// var height = $('.section_item').css('height') + $('.map').css('height');
-		$('.search_filter_slidedown').slideDown();
-		// $('.section_item').css('height',height);
-	}
-});
+		console.log('I am in ckick')
+		if($('.search_filter_slidedown').is(':visible'))
+		{
+			// var height = $('.section_item').css('height') - $('.map').css('height');
+			$('.search_filter_slidedown').slideUp();
+			console.log('I am going to slide up');
+			// $('.section_item').css('height',height);
+		}
+		else
+		{
+			// var height = $('.section_item').css('height') + $('.map').css('height');
+			$('.search_filter_slidedown').slideDown();
+			// $('.section_item').css('height',height);
+		}
+	});
+	$(document).ready(function () {
+		addTag('<%= @tags %>', true);
+	});
 </script>

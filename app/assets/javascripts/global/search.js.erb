@@ -1,5 +1,5 @@
-tags = [];
-var name, current_location;
+var name, current_location, tags;
+tags = tags || [];
 specialitySearch = function () {
 	$.ajax({
 		url: '/search/',
@@ -15,9 +15,9 @@ specialitySearch = function () {
 	});
 };
 
-function addTag(value) {
+function addTag(value, initialize) {
 	if (tags.indexOf(value) === -1) { tags.push(value); }
-	specialitySearch();
+	if (!initialize) { specialitySearch(); }
 }
 function removeTag(value) {
 	if (tags.indexOf(value) !== -1) {
@@ -33,3 +33,4 @@ function setLocation(value) {
 	current_location = value;
 	specialitySearch();
 }
+
