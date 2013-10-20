@@ -138,6 +138,16 @@ $(document).ready(function () {
 			removeTag(e.removed.text, "Select2");
 		}
 		
-	})
+	});
+	var searchautocomplete = new google.maps.places.Autocomplete(
+		/** @type {HTMLInputElement} */(document.getElementById('searchAutocomplete')),
+		{ types: ['geocode'] });
+	// When the user selects an address from the dropdown,
+	// populate the address fields in the form.
+	google.maps.event.addListener(searchautocomplete, 'place_changed', function(e) {
+		var value = $('#searchAutocomplete').val();
+		setLocation(value);
+	});
+	
 	
 });
