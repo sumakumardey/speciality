@@ -49,18 +49,22 @@ class DishesController < ApplicationController
 	# POST /dishes
 	# POST /dishes.json
 	def create
-		attachment = params[cname].delete(:attachment)
-		@dish = current_or_guest_user.dishes.build(params[cname])
-		@dish.build_attachment(:avatar => attachment)
-		@dish.restaurant = @restaurant
-		build_location
+    attachment = params[cname].delete(:attachment)
+	  @dish = current_or_guest_user.dishes.build(params[cname])
+    @dish.build_attachment(:avatar => attachment)
+    @dish.restaurant = @restaurant
+    @dish.score = params[:score]
+
+    build_location
 		respond_to do |format|
 			if @dish.save
 				format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
 				format.json { render json: @dish, status: :created, location: @dish }
+        format.js
 			else
 				format.html { render action: "new" }
 				format.json { render json: @dish.errors, status: :unprocessable_entity }
+        format.js
 			end
 		end
 	end
