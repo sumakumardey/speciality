@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "attachment_id"
+    t.float    "cost"
   end
 
   create_table "locations", :force => true do |t|
