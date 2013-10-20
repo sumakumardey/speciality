@@ -8,7 +8,7 @@
 					:dimension => "awesomeness",
 					:rateable_id => @dish.id,
 					:rateable_type => @dish.class.name }).first %>
-				<% rating.stars unless rating.blank? %>
+				<%= rating.stars unless rating.blank? %>
 			</p>
 		</div>
 		<div class="reviewer_review_content">
