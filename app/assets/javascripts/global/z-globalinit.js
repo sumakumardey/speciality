@@ -167,6 +167,20 @@ var searchTag,
 			ev.preventDefault();
 			$('#new_item_modal').modal();
 		});
-	
+		$('#new_dish').submit(function (ev) {
+			ev.preventDefault();
+			$(this).ajaxSubmit({
+				dataType: 'json',
+				async: false,
+				beforeSubmit: function (arr, $form) {
+				},
+				success: function (data) {
+					if (data) {
+						window.location = '/dishes/' + data;
+					}
+				},
+				error: function (data) { }
+			});
+		})
 	});
 }(jQuery));

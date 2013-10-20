@@ -12,6 +12,7 @@ class Dish < ActiveRecord::Base
 	has_many :searches
 	delegate :name, :to => :restaurant, :allow_nil => true, :prefix => true
 	delegate :address, :to => :location, :allow_nil => true, :prefix => true
+  delegate :avatar, :to => :attachment, :allow_nil => true
   letsrate_rateable "awesomeness"
 
   has_one :attachment, :as => :attachable, :dependent => :destroy

@@ -4,7 +4,7 @@
 		<div class="col-lg-12 section_item">
 			<div class="row row_item">
 				<div class="item_same_line">
-					<%= image_tag dish_show_image_path(@dish.id), :class => "item_info_bar" %>
+          <%= rendering_image_data(@dish, "item_info_bar") %>
 				</div>
 				<div class="item_same_line item_main_info">
 					<div class="item_description_div">
