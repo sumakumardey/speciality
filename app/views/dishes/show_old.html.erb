@@ -45,38 +45,6 @@
     <b> "<%= tag.name %>" <b> 
   <% end %>
 <p>
-    <meta name="viewport" content="initial-scale=4.0, user-scalable=yes">
-    <meta charset="utf-8">
-    <title>Simple markers</title>
-    <style>
-      html, body, #map-canvas {
-        height: 80%;
-        margin: 0px;
-        padding: 0px
-      }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script>
-function initialize() {
-  var myLatlng = new google.maps.LatLng("<%=@dish.location.latitude%>","<%=@dish.location.longitude%>");
-  var mapOptions = {
-    zoom: 11,
-    center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
-  });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-    </script>
-    <div id="map-canvas"></div>
 <p class="reviews_container">
   <% if @reviews %>
     <% @reviews.each do |review| %>
@@ -93,7 +61,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <%= form_for(@new_review, remote: true) do |new_review| %>
     <div class="field">
       <%= new_review.label :description %><br /> 
-      <%= new_review.text_field :description %>
+      <%= new_review.text_area :description %>
     <div>
       <%= new_review.hidden_field :dish_id, :value => @dish.id %>
       <%= new_review.submit %>
