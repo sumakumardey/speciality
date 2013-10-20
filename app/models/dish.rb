@@ -48,6 +48,7 @@ class Dish < ActiveRecord::Base
 
 	private
 		def build_new_tags
+			return if tag_names.blank?
 			self.tags.clear
 			(tag_names || "").split(",").each do |name|
 				tag = Tag.find_or_create_by_name(name)

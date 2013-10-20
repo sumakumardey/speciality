@@ -1,4 +1,4 @@
-<div class="col-md-3 component_front component_margin_right component_margin_bottom">
+<div class="col-md-3 component_front <%= ((dish_counter % 4) == 3) ? "" : "component_margin_right" %> component_margin_bottom">
 	<div class="front_component">
 		<%= image_tag dish_show_image_path(dish.id) %>
 		<div class="component-caption">

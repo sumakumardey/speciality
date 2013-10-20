@@ -49,11 +49,11 @@ class DishesController < ApplicationController
 	# POST /dishes
 	# POST /dishes.json
 	def create
-    attachment = params[cname].delete(:attachment)
-	@dish = current_or_guest_user.dishes.build(params[cname])
-    @dish.build_attachment(:avatar => attachment)
-    @dish.restaurant = @restaurant
-    build_location
+		attachment = params[cname].delete(:attachment)
+		@dish = current_or_guest_user.dishes.build(params[cname])
+		@dish.build_attachment(:avatar => attachment)
+		@dish.restaurant = @restaurant
+		build_location
 		respond_to do |format|
 			if @dish.save
 				format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
@@ -70,7 +70,7 @@ class DishesController < ApplicationController
 	def update
 		attachment = params[cname].delete(:attachment)
 		@dish = current_or_guest_user.dishes.find(params[:id])
-		@dish.build_attachment(:avatar => attachment)
+		@dish.build_attachment(:avatar => attachment) unless attachment.blank?
 		@dish.restaurant = @restaurant
 		respond_to do |format|
 			if @dish.update_attributes(params[:dish])

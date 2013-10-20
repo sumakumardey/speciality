@@ -17,7 +17,7 @@ function initialize() {
 	});
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+// google.maps.event.addDomListener(window, 'load', initialize);
 $(document).ready(function () {
 	$(".write_review").on('click', function(ev) {
 		ev.preventDefault();
