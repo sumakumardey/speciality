@@ -30,6 +30,12 @@ class DishesController < ApplicationController
       :type => 'image/png', :disposition => 'inline'
   end
 
+  def show_small_image
+    @dish = Dish.find(params[:dish_id])
+    send_data @dish.avatar.file_contents(:thumb), 
+      :type => 'image/png', :disposition => 'inline'
+  end
+
 	# GET /dishes/new
 	# GET /dishes/new.json
 	def new

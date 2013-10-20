@@ -18,6 +18,14 @@ for (var text in NO_RESULT_TEXT) {
 	NO_RESULT_TEXT_ARRAY.push(NO_RESULT_TEXT[text]);
 }
 (function ($) {
+	$('body').ready(function(){
+	$('#current_city').popover(
+		{
+			placement : "bottom",
+			trigger : 'hover',
+			content : "Sorry we are currently only available in san fransisco"
+		})
+	});
 	searchTag = function (name) {
 		$.ajax({
 			url: '/tags/search',
