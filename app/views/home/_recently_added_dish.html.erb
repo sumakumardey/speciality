@@ -9,7 +9,7 @@
 			<div class="white_border_rating ">
 				<div class="rating_div">
 					<img src="<%= asset_path 'component-vertical.png' %>" class="vertical_line">
-					<p class="dish_rating"><%= dish.avg_ratings || 0.0 %></p>
+					<p class="dish_rating"><%= (dish.avg_ratings || 0.0).to_f.round(2) %></p>
 				</div>
 			</div>
 		</div>
@@ -21,10 +21,11 @@
 				<%= dish.restaurant_name.to_s.camelcase %></p>
 		</div>
 		<div class="back_component_color">
-			<p class="back_component_content"><span class="glyphicon glyphicon-heart icon_size"></span><%= dish.avg_ratings || 0.0 %></p>
+			<p class="back_component_content"><span class="glyphicon glyphicon-heart icon_size"></span><%= (dish.avg_ratings || 0.0).to_f.round(2) %></p>
 		</div>
 		<div class="back_component_white">
-			<p class="back_component_content"><span class="glyphicon glyphicon-usd icon_size"></span>100</p>
+			<p class="back_component_content"><span class="glyphicon glyphicon-usd icon_size"></span>
+				<%=dish.cost || 0 %> $</p>
 		</div>
 		<div class="back_component_color">
 			<p class="back_component_content"><span class="glyphicon glyphicon-globe icon_size"></span><%= dish.location_address || "Velachery" %></p>

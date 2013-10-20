@@ -21,15 +21,15 @@
 					<div class="item_properties_div">
 						<div class="item_description_div_points">
 							<p class="item_description_div_point">
-								<span class="ratings_average"><%= @dish.avg_ratings || 0.0 %></span></p>
+								<span class="ratings_average"><%= (@dish.avg_ratings || 0.0).to_f.round(2) %></span></p>
 							<p class="item_description_div_rating">
 								<span class="no_of_people_rated"><%= @dish.no_of_ratings || 0 %></span> rating</p>
 						</div>
 						<div class="item_description_div_cost">
-							<p class="item_description_div_cost_value">Rs 100</p>
+							<p class="item_description_div_cost_value"><%=@dish.cost || 0%> $ </p>
 						</div>
 						<div class="item_description_div_cost">
-							<p class="item_description_div_cost_value">Rs 100</p>
+							<p class="item_description_div_cost_value"><%=@dish.cost || 0%> $</p>
 						</div>
 					</div>
 				</div>
