@@ -1,0 +1,76 @@
+<div id="carousel-example-generic" class="carousel slide carousel_search">
+	<div class="carousel_overlay_div">
+		<div class="container container_home">
+			<div class=" col-lg-8 center_overlay overlay-search">
+				<div class="form-group">
+					<p class="home_margin text-center home_font"></p>
+					<input type="text" class="form-control" id="search_speciality" placeholder="Search">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner carousel-inner-search">
+		<div class="item active">
+			<img src="<%= asset_path 'noodles-banner.png' %>" class="carousel_img">
+		</div>
+		<div class="item">
+			<img src="<%= asset_path 'coffee-banner.png' %>" class="carousel_img">
+		</div>
+		<div class="item">
+			<img src="<%= asset_path 'Watermelon-Banner.png' %>" class="carousel_img">
+		</div>
+	</div>
+</div>
+
+<div class="container container_item_page">
+	<div class="row_search_page ">
+		<div class="col-lg-6 padding-search">
+			<input type="text" style="padding-top:3.5px;padding-bottom:3.5px;width:355px;">
+			
+		</div>
+		<div class="col-lg-2 col-lg-offset-4 padding-search">
+		<button class="btn btn-success search_filter_opener">Filter</button>
+		</div>
+	</div>
+
+	<div class="row_search_page search_filter_slidedown">
+		<div class="col-lg-12 ">
+			<div class="item_same_line filter_option_selector_container">
+				<p class="popular_tags">Popular Tags</p>
+			</div>
+			<div class="item_same_line filter_option_selector_container">
+				sldflsjflskjd
+			</div>
+		</div>
+	</div>
+
+	<div class="row_search_page ">
+		<div class="col-lg-12 row_search_page_container">
+			
+		
+		</div>
+		</div>
+	</div>
+</div>
+
+<script>
+// $('.search_filter_slidedown').hide();
+$('.search_filter_opener').click(function()
+{
+	console.log('I am in ckick')
+	if($('.search_filter_slidedown').is(':visible'))
+	{
+		// var height = $('.section_item').css('height') - $('.map').css('height');
+		$('.search_filter_slidedown').slideUp();
+		console.log('I am going to slide up');
+		// $('.section_item').css('height',height);
+	}
+	else
+	{
+		// var height = $('.section_item').css('height') + $('.map').css('height');
+		$('.search_filter_slidedown').slideDown();
+		// $('.section_item').css('height',height);
+	}
+});
+</script>
