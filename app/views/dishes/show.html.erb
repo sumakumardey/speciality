@@ -70,7 +70,7 @@
 
 	<div class="row item_info_box row_modify reviews_container">
 		<div class="col-lg-12 reviews_top_bar">
-			<p class="address_text"><%= @dish.location_address || "Velachery" %></p>
+			<p class="address_text">Write a review for <span class="color_green"><%=@dish.restaurant_name.to_s.capitalize%></span> at <%= (@dish.location_address || "Velachery").capitalize %></p>
 			<a href="#" class="right_anchor write_review"> Write review </a> 
 			<p href="#" class="right_anchor_p"> <%= @dish.reviews.size - 1 %> reviews </p> 
 		</div>
