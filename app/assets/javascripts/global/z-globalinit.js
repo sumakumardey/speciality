@@ -23,7 +23,7 @@ for (var text in NO_RESULT_TEXT) {
 		{
 			placement : "bottom",
 			trigger : 'hover',
-			content : "Sorry we are currently only available in san fransisco"
+			content : "We are currently taking over restaurant reviews here in SFO. Feel free to add any local dishes and join the community"
 		});
 
 	$('.back_component').css('cursor','pointer');
