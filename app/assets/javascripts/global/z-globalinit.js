@@ -24,8 +24,17 @@ for (var text in NO_RESULT_TEXT) {
 			placement : "bottom",
 			trigger : 'hover',
 			content : "Sorry we are currently only available in san fransisco"
-		})
+		});
+
+	$('.back_component').css('cursor','pointer');
+	$('.back_component').click(function()
+		{
+			
+			var link = $($(this).find('a')[0]);
+			window.location.href = link.attr('href');
+		});
 	});
+
 	searchTag = function (name) {
 		$.ajax({
 			url: '/tags/search',
