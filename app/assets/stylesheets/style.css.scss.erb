@@ -33,23 +33,26 @@ padding-top: 10px;
 padding-bottom: 25px;
 }
 
-.user_stats { background-color: #dddddd; margin-top: 40px; margin-right: 70px;
-height: 55px; width: 25%; padding-top : 20px; padding-left : 20px;
-padding-right : 20px; float: right; }
+.user_stats { background-color: #dddddd;
+margin-top: 40px;
+margin-right: 70px;
+height: 55px;
+width: 27%;
+padding-top: 13px;
+padding-left: 25px;
+padding-right: 25px;
+float: right; }
 
 .user_profile_page { margin-top: 40px; margin-bottom: 40px; background-color:
 #e8e8e8; padding-right : 0px !important; padding-left : 0px !important; }
 
 #reviews
 { padding-top: 30px;
-padding-left: 50px;
-min-height: 660px;
-background-color: white; }
+min-height: 660px; }
 
 #items
 { padding-top: 30px;
-min-height: 660px;
-background-color: white; }
+min-height: 660px; }
 
 /* line 34, ../../app/assets/stylesheets/style.css.scss.erb */ .center_overlay
 { background-color: rgba(0, 0, 0, 0.6); float: none; margin: 0 auto; padding:
@@ -471,16 +474,22 @@ body {
   height: 60px;
   background-color: white;
   width: 1140px;
+	padding-left: 14px;
 }
 
 /* line 443, ../../app/assets/stylesheets/style.css.scss.erb */
 .address_text {
-  font-size: 20px;
+ font-size: 20px;
   color: #373737;
   padding-top: 15px;
   padding-left: 12px;
+  height: 43px;
   font-weight: 300;
   display: inline-block;
+  width: 700px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* line 453, ../../app/assets/stylesheets/style.css.scss.erb */
@@ -577,9 +586,8 @@ body {
 
 /* line 544, ../../app/assets/stylesheets/style.css.scss.erb */
 .review_content {
-  font-size: 13px;
-  font-weight: 300;
-  height: 86px;
+  font-size: 14px;
+  font-weight: 400;
   text-align: justify;
 }
 
@@ -592,8 +600,8 @@ body {
 /* line 557, ../../app/assets/stylesheets/style.css.scss.erb */
 .reviewer_name {
   text-align: center;
-  font-size: 13px;
-  font-weight: 300;
+	font-size: 13px;
+	font-weight: 500;
   margin-bottom: 0px !important;
 }
 
@@ -607,8 +615,8 @@ body {
 
 /* line 573, ../../app/assets/stylesheets/style.css.scss.erb */
 .comment_heading {
-  font-size: 14px;
-  font-weight: 600;
+	font-size: 14px;
+	font-weight: 400;
   padding-left: 35px;
 }
 
@@ -623,6 +631,7 @@ body {
   margin-left: 35px;
   margin-right: 35px;
   width: 1035px;
+	padding: 14px;
 }
 
 /* line 593, ../../app/assets/stylesheets/style.css.scss.erb */
@@ -723,7 +732,7 @@ body {
 .item_title {
    font-size: 26px;
   color: white;
-  font-weight: 100;
+  font-weight: 200;
   padding-top: 20px;
   overflow: hidden;
   width: 550px;
@@ -735,9 +744,9 @@ body {
 /* line 691, ../../app/assets/stylesheets/style.css.scss.erb */
 .item_restaurant {
   margin: 0 !important;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
-  font-weight: 100;
+  font-weight: 200;
   overflow: hidden;
   width: 400px;
   height: 28px;
@@ -745,12 +754,17 @@ body {
   white-space: nowrap;
 }
 
+.item_restaurant > a
+{
+  color : white !important;
+}
+
 /* line 701, ../../app/assets/stylesheets/style.css.scss.erb */
 .item_description_content {
   margin: 0 !important;
   font-size: 14px;
   color: white;
-  font-weight: 100;
+  font-weight: 200;
   width: 100%;
   padding-top: 10px;
   text-align: justify;
@@ -789,9 +803,9 @@ body {
 
 /* line 734, ../../app/assets/stylesheets/style.css.scss.erb */
 .item_description_div_point {
-  font-size: 30px;
-  font-weight: 400;
-  color: #f6b000;
+	font-size: 26px;
+	font-weight: 200;
+	color: #FFF;
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
   text-align: center;
@@ -888,14 +902,14 @@ body {
 {
   font-size : 14px;
   color : white;
-  font-weight : 100;
+  font-weight : 200;
 }
 
 .info_poster > a
 {
   font-size : 14px;
   color : white;
-  font-weight : 100;
+  font-weight : 200;
 }
 
 .info_poster_name
@@ -925,6 +939,7 @@ body {
   color : white;
   font-size : 14px;
   font-weight : 300;
+	padding-left: 15px;
 }
 .black_box_margin
 {
@@ -1078,3 +1093,26 @@ margin-bottom : 20px;
 .dish_search_page_min_height {
 	min-height: 800px;
 }
+
+
+.user_stats_rest
+{
+  background-color: #dddddd;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-right: 70px;
+  height: 55px;
+  width: 27%;
+  padding-top: 13px;
+  padding-left: 25px;
+  padding-right: 25px;
+  float: right;
+}
+
+.map_opener {
+	margin-right: 36px;
+}
+.edit_dish_btn {
+	width: 120px;
+}
+

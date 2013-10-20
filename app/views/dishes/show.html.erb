@@ -9,7 +9,7 @@
 				<div class="item_same_line item_main_info">
 					<div class="item_description_div">
 						<p class="item_title"><%= @dish.name %></p>
-						<p class="item_restaurant"><%= @dish.restaurant_name %></p>
+						<p class="item_restaurant"><%= link_to @dish.restaurant_name, restaurant_path(@dish.restaurant) %></p>
 						<p class="item_description_content"><%= @dish.description %></p>
 						<div class="dish_info_footer">
 							<div class="item_same_line_info">
@@ -20,20 +20,21 @@
 							<div class="item_same_line_info">
 								<span class="info_poster">Tags : </span>
 								<% (@dish.tags || []).each do |tag| %>
-								<span class="info_poster_name">
-                  <%= link_to tag.name.camelcase, search_path('search[tags]' => tag.name)%>
-                </span>
+									<span class="info_poster_name">
+										<%= link_to tag.name.camelcase, search_path('search[tags]' => tag.name)%>
+									</span>
 								<% end %>
 							</div>
 							<div class=" black_box black_box_margin">
-								<span>Rate this dish<span>
+								<span>RATE THIS DISH<span>
 								<div class="ratings_container">
 									<%= rating_stars(@dish) %>
 								</div>
 							</div>
 							<div class="black_box">
 								<span class="info_poster write_review"><a href="#" >WRITE A REVIEW</a> </span>
-								<span class="info_poster_name" style="margin-left:40px;margin-right:20px;"><%= @dish.reviews.count%> SO FAR</span>
+								<span class="info_poster_name" style="margin-left:20px;margin-right:20px;">
+									<%= @dish.reviews.count > 0 ? "#{@dish.reviews.count} reviews so far" : "Be the first reveiwer" %></span>
 							</div>
 						</div>
 					</div>
@@ -42,14 +43,14 @@
 							<p class="item_description_div_point">
 								<span class="ratings_average"><%= (@dish.avg_ratings || 0.0).to_f.round(2) %></span></p>
 							<p class="item_description_div_rating">
-								<span class="no_of_people_rated"><%= @dish.no_of_ratings || 0 %></span> rating</p>
+								<span class="no_of_people_rated"><%= @dish.no_of_ratings || 0 %></span> Rating</p>
 						</div>
 						<div class="item_description_div_cost">
-							<p class="item_description_div_cost_value"> $ <%=@dish.cost || 0%>  </p>
+							<p class="item_description_div_cost_value"> $<%=@dish.cost || 0%>  </p>
 						</div>
 						<% if @dish.user == current_or_guest_user %>
 							<div class="item_description_div_cost_edit">
-								<p class="item_description_div_cost_value"> <%= link_to "Edit Dish", edit_dish_path(@dish), :class => "btn btn-danger header_btn", :id => "edit_dish" %> </p>
+								<p class="item_description_div_cost_value"> <%= link_to "Edit Dish", edit_dish_path(@dish), :class => "btn btn-danger header_btn edit_dish_btn", :id => "edit_dish" %> </p>
 							</div>
 						<% end %>
 					</div>
@@ -57,7 +58,7 @@
 			</div>  
 			<div class="row  row_item green_border">
 				<div class="restaurant_address">
-					<p class="address_text"><%= @dish.location_address || "Velachery" %></p>
+					<p class="address_text"><%= @dish.location_address %></p>
 					<a href="#" class="right_anchor map_opener"> Show on map </a> 
 				</div>
 				<div class="row row_item map">
@@ -71,7 +72,7 @@
 
 	<div class="row item_info_box row_modify reviews_container">
 		<div class="col-lg-12 reviews_top_bar">
-			<p class="address_text">Write a review for <span class="color_green"><%=@dish.restaurant_name.to_s.capitalize%></span> at <%= (@dish.location_address || "Velachery").capitalize %></p>
+			<p class="address_text">Write a review for <span class="color_green"><%=@dish.name.to_s.capitalize%></span> at <%=@dish.restaurant_name.to_s.capitalize%></p>
 			<a href="#" class="right_anchor write_review"> Write review </a> 
 			<p href="#" class="right_anchor_p"> <%= @dish.reviews.size - 1 %> reviews </p> 
 		</div>
@@ -83,7 +84,7 @@
 
 		<div class="col-lg-12 reviews_comment">
 			<p class="comment_heading">
-				WRITE A REVIEW FOR <span class="color_green">SOMETHING</span> AT SOMEWHERE
+				WRITE A REVIEW FOR  <span class="color_green"><%=@dish.name.to_s.upcase %></span> AT <%=@dish.restaurant_name.to_s.upcase %>
 			</p>
 			<%= form_for(@new_review, remote: true) do |new_review| %>
         <div id="error_explanation">
