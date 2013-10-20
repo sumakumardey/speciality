@@ -21,14 +21,17 @@ function initialize_map() {
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
 		fillInAddress();
 	});
-	edit_autocomplete = new google.maps.places.Autocomplete(
-	/** @type {HTMLInputElement} */(document.getElementById('edit_autocomplete')),
-	{ types: ['geocode'] });
-	// When the user selects an address from the dropdown,
-	// populate the address fields in the form.
-	google.maps.event.addListener(edit_autocomplete, 'place_changed', function() {
-		fillInAddressEdit();
-	});
+	if ($('#edit_autocomplete').length) {
+		edit_autocomplete = new google.maps.places.Autocomplete(
+		/** @type {HTMLInputElement} */(document.getElementById('edit_autocomplete')),
+		{ types: ['geocode'] });
+		// When the user selects an address from the dropdown,
+		// populate the address fields in the form.
+		google.maps.event.addListener(edit_autocomplete, 'place_changed', function() {
+			fillInAddressEdit();
+		});
+		
+	}
 }
 
 // The START and END in square brackets define a snippet for our documentation:
