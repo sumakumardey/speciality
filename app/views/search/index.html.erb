@@ -40,17 +40,18 @@
 					<% end %>
 				</div>
 				<div>
-						<input class="tags_autocomplete tags_filter_autocomplete single-input-hack new_item_form_input">
+					<p class="popular_tags_title margin-top-heading">Custom Filters</p>
+					<input class="tags_autocomplete tags_filter_autocomplete single-input-hack new_item_form_input">
 				</div>
 			</div>
 			<div class="row_search_page col-lg-6 filter_option_selector_container">
 				<p class="popular_tags_title">How much ?</p>
 				<input type="range" name="points"  id="range" value="50" min="1" max="1000">
-				<div> 
-					<span>Rs </span><span id="range_value">50</span>
-				</div>
-				<div>
-					<input class="single-input-hack new_item_form_input" id="searchAutocomplete">
+					<span class="price_span_rs">Rs </span>
+					<span class="price_span" id="range_value">50</span>
+					<p class="popular_tags_title">Where ?</p>
+				<div class="location_css_search">
+					<input class="single-input-hack padding-top-location"  id="searchAutocomplete">
 				</div>
 			</div>
 
