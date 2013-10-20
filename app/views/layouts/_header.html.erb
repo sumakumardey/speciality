@@ -29,7 +29,7 @@
 					<div class="dropdown">
 						<%= link_to "My Account", "#", :class => "btn btn-danger", :id => "login" , :'data-toggle' => "dropdown" %>
                               <ul class="dropdown-menu dropdown-menu-home" role="menu" aria-labelledby="dLabel">
-                              	 <% if current_user? && false %> 
+                              	 <% if current_user? %> 
 	                              	 <li><a href="/users/auth/facebook" class="facebook">Sign in with facebook</a></li>
 	                                <li><a href="/users/auth/twitter" class="twitter">Sign in with Twitter</a></li>
 								  <% else %>

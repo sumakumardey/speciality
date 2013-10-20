@@ -23,7 +23,7 @@ $(function(){
 					},
 					success: function(data) {
 						if(data) {
-							$('.ratings_average').html(data.avg + ' / 5');
+							$('.ratings_average').html((data.avg || 0).toFixed(1));
 							$('.no_of_people_rated').html(data.qty);
 						}
 					}
