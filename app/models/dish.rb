@@ -42,7 +42,7 @@ class Dish < ActiveRecord::Base
 	validates :restaurant_id, :presence => :true
 	validates :name, :presence => :true
   validates :score, :presence => :true, :on => :create
-	validates :cost, :presence => :true, :numericality => {:only_integer => true}
+	validates :cost, :presence => :true, :numericality => {:only_integer_and_float => true}
 
 	def self.recently_added
 		Dish.find(:all, :include => :location, :order => "id desc", :limit => 8)
