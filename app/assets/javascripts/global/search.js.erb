@@ -76,7 +76,6 @@ function addFilterTagsUI(value, type) {
 	}
 }
 function removeFilterTagsUI(value, type) {
-			console.log(value, type);
 	var id = value.split(' ').join('-'),
 		$element = $('.filter-tag-list').find('.' + type + '#' + id);
 
@@ -125,6 +124,9 @@ function updateSelect2(value) {
 function setSort(value) {
 	sort = value;
 	specialitySearch();
+}
+function showOrHideFilters() {
+	$('.filter-tag-list').toggle($('.filter-tag-list span').length);
 }
 $(document).ready(function () {
 	$('.filter-tag-list').on('click', '.badge', function () {
