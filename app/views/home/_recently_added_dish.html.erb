@@ -1,9 +1,9 @@
-<div class="col-md-3 component_front component_margin_right component_margin_bottom">
+<div class="col-md-3 component_front <%= ((dish_counter % 4) == 3) ? "" : "component_margin_right" %> component_margin_bottom">
 	<div class="front_component">
 		<%= image_tag dish_show_image_path(dish.id) %>
 		<div class="component-caption">
 			<div class="white_border_name">
-				<p class="dish_name"><%= dish.name.camelcase %></p>
+				<p class="dish_name"><%= dish.name.to_s.camelcase %></p>
 				<p class="restaurant_name"><%= dish.restaurant_name %></p>
 			</div>
 			<div class="white_border_rating ">
@@ -16,9 +16,9 @@
 	</div>
 	<div class="back_component">
 		<div class="back_component_first">
-			<p class="back_component_first_heading text-center"><%= dish.name.camelcase %></p>
+			<p class="back_component_first_heading text-center"><%= dish.name.to_s.camelcase %></p>
 			<p class="back_component_first_content text-center">
-				<%= dish.restaurant_name.camelcase %></p>
+				<%= dish.restaurant_name.to_s.camelcase %></p>
 		</div>
 		<div class="back_component_color">
 			<p class="back_component_content"><span class="glyphicon glyphicon-heart icon_size"></span><%= dish.avg_ratings || 0.0 %></p>

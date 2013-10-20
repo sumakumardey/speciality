@@ -6,6 +6,8 @@ Speciality::Application.routes.draw do
   match 'dish_autocompleter' => "home#dish_autocompleter"
   match 'tag_autocompleter' => "home#tag_autocompleter"
   match 'place_autocompleter' => "home#place_autocompleter"
+  match 'place_autocompleter' => "home#place_autocompleter"
+  match "search" => "search#index"
   resources :locations
 
   resources :reviews

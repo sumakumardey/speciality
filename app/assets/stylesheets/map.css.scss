@@ -39,3 +39,6 @@ html, body, #map-canvas {
   height: 20px;
   margin-bottom: 2px;
 }
+.pac-container {
+	z-index: 9999 !important;
+}

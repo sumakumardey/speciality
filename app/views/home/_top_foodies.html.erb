@@ -1,9 +1,10 @@
-<div class="row component_padding_left"> 
-  <div class="row ">
-    <div class="col-md-4 col-md-offset-4 recently_heading">
-      <p class="text-center section_heading">Top Foodies</p>
-    </div>
-  </div>
-  <%= render :partial => 'top_foodie', :collection => @top_foodies,
+
+<div class="row ">
+	<div class="heading_padding">
+		<p class="section_heading">Top Foodies</p>
+	</div>
+</div>
+<div class="row ">
+	 <%= render :partial => 'top_foodie', :collection => @top_foodies,
     :as => :top_foodie %>
 </div>

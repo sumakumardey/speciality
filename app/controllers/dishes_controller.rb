@@ -74,7 +74,7 @@ class DishesController < ApplicationController
 	def update
 		attachment = params[cname].delete(:attachment)
 		@dish = current_or_guest_user.dishes.find(params[:id])
-		@dish.build_attachment(:avatar => attachment)
+		@dish.build_attachment(:avatar => attachment) unless attachment.blank?
 		@dish.restaurant = @restaurant
 		respond_to do |format|
 			if @dish.update_attributes(params[:dish])

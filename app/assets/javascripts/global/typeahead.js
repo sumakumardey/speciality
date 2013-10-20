@@ -858,7 +858,7 @@
         var html = {
             wrapper: '<span class="twitter-typeahead"></span>',
             hint: '<input class="tt-hint" type="text" autocomplete="off" spellcheck="off" disabled>',
-            dropdown: '<span class="tt-dropdown-menu"></span>'
+            dropdown: '<div class="tt-dropdown-menu"></div>'
         }, css = {
             wrapper: {
                 position: "relative",

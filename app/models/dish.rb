@@ -29,7 +29,8 @@ class Dish < ActiveRecord::Base
 	def search_data
 		{
 			tag: tags.collect(&:name),
-			name: name
+			name: name,
+			location: location.address
 		}
 	end
 
@@ -46,8 +47,13 @@ class Dish < ActiveRecord::Base
 		Dish.find(:all, :include => :location, :order => "id desc", :limit => 8)
 	end
 
+	def self.search_all_with_id(ids)
+		Dish.find(:all,:conditions => { :id => ids } , :include => :location, :order => "id desc", :limit => 8)
+	end
+
 	private
 		def build_new_tags
+			return if tag_names.blank?
 			self.tags.clear
 			(tag_names || "").split(",").each do |name|
 				tag = Tag.find_or_create_by_name(name)
