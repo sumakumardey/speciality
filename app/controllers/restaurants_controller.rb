@@ -1,4 +1,9 @@
 class RestaurantsController < ApplicationController
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+
 	def search
 		restaurants = Restaurant.search params[cname][:name], autocomplete: true
 		respond_to do |format|
