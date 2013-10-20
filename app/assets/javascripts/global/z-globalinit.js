@@ -55,7 +55,7 @@ for (var text in NO_RESULT_TEXT) {
 	};
 	$(document).ready(function () {
 		$('.tags_autocomplete').select2({
-			placeholder: "Enter tags for your dish",
+			placeholder: "Enter tags",
 			tags: true,
 			tokenSeparators: [","],
 			createSearchChoice: function(term, data) {
@@ -100,7 +100,7 @@ for (var text in NO_RESULT_TEXT) {
 		});
 
 		$('.restaurant_autocomplete').select2({
-			placeholder: "What was the name of the restaurant?",
+			placeholder: "Enter tags",
 			minimumInputLength: 1,
 			multiple: false,
 			ajax: {
