@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
-	<div class="container">
+	<div class="container my_container_header">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#">
 				<img class="logo_brand"  src="<%= asset_path 'Speciality-Home.png' %>">
@@ -19,13 +19,10 @@
 					<a href="#">Chennai</a>
 				</li>
 				<li>
-					<%= link_to "Home", root_path %>
-				</li>
-				<li>
 					<a href="#">Discover</a>
 				</li>
 				<li class="navbar_list">
-					<%= link_to "Add Dish", new_dish_path, :class => "btn btn-danger", :id => "add_dish" %>
+					<%= link_to "Add Dish", new_dish_path, :class => "btn btn-danger header_btn", :id => "add_dish" %>
 				</li>
 				<li class="navbar_list">
 
