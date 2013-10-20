@@ -1,10 +1,11 @@
-<% @new_dish = Dish.new %>
-<div class="modal fade" id="new_item_modal">
+<% @new_dish = @dish || Dish.new %>
+<div class="modal fade" id="edit_item_modal">
 		<div class="modal-dialog ">
 			<div class="modal-content add_item_container">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<p class="new-item-heading">Add a new item to Speciality</
+					<p class="new-item-heading">Add a new item to Speciality</p>
+				</div>
 				<div class="modal-body">
 					<%= form_for(@new_dish, remote: true, format: :json, multipart: true) do |f| %>
 						<div id="error_explanation">
@@ -69,7 +70,7 @@
 					<div class="modal_footer_down">
 					<a href="#" onclick="function(){return false;}" data-dismiss="modal" class="modal_cancel">CANCEL</a>
 					<button class="btn btn-success">SUBMIT REVIEW</button>
-					</div>
+					<div>
 				</div>
 				<% end %>
 			</div><!-- /.modal-content -->

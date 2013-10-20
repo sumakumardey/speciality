@@ -14,7 +14,6 @@ specialitySearch = function () {
 			'search[sort]' : sort,
 		},
 		success: function (data) {
-			console.log(data);
 		}
 	});
 };
@@ -40,10 +39,13 @@ function setName(value) {
 	name = value;
 	specialitySearch();
 }
-function setLocation(value) {
+function setLocation(value, initialize) {
+	if (value == undefined || value == "") {
+		return false;
+	}
 	current_location = value;
 	addFilterLocationUI(value, 'location');
-	specialitySearch();
+	if (!initialize) { specialitySearch(); }
 }
 function removeLocation(value) {
 	current_location = '';
@@ -112,6 +114,7 @@ function removeFilterLocationUI(value, type) {
 	var $element = $('.filter-tag-list').find('.' + type);
 	if ($element){ $element.remove(); }
 }
+
 function updateSelect2(value) {
 	var valuesArray = $('input.tags_filter_autocomplete').select2('val');
 	if (valuesArray.indexOf(value) !== -1) {
@@ -142,7 +145,7 @@ $(document).ready(function () {
 	$('.sort-dishes').on('click', function () {
 		var $this = $(this),
 			value = $this.data('value');
-			console.log(value);
+
 			setSort(value);
 	});
 	$('.tags_filter_autocomplete').on('change', function (e) {
@@ -153,15 +156,18 @@ $(document).ready(function () {
 		}
 		
 	});
-	var searchautocomplete = new google.maps.places.Autocomplete(
-		/** @type {HTMLInputElement} */(document.getElementById('searchAutocomplete')),
-		{ types: ['geocode'] });
-	// When the user selects an address from the dropdown,
-	// populate the address fields in the form.
-	google.maps.event.addListener(searchautocomplete, 'place_changed', function(e) {
-		var value = $('#searchAutocomplete').val();
-		setLocation(value);
-	});
-	
+	if ($('#searchAutocomplete').length) {
+		var searchautocomplete = new google.maps.places.Autocomplete(
+			/** @type {HTMLInputElement} */(document.getElementById('searchAutocomplete')),
+			{ types: ['geocode'] });
+		// When the user selects an address from the dropdown,
+		// populate the address fields in the form.
+		google.maps.event.addListener(searchautocomplete, 'place_changed', function(e) {
+		
+				var value = $('#searchAutocomplete').val();
+				setLocation(value);
+
+		});
+	}	
 	
 });

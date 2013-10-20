@@ -4,6 +4,12 @@ $(document).ready(function () {
 		ev.preventDefault();
 		$('#new_item_modal').modal();
 	});
+
+	$('#edit_dish').click(function (ev) {
+		ev.preventDefault();
+		$('#edit_item_modal').modal();
+	});
+
 	$('#new_dish').submit(function (ev) {
 		ev.preventDefault();
 		$(this).ajaxSubmit({
@@ -12,6 +18,7 @@ $(document).ready(function () {
 			beforeSubmit: function (arr, $form) {
 			},
 			success: function (data) {
+				console.log(data);
 				if (data) {
 					window.location = '/dishes/' + data;
 				} else {
@@ -23,6 +30,50 @@ $(document).ready(function () {
 			}
 		});
 	});
+
+	// $('#edit_dish').submit(function (ev) {
+// 		ev.preventDefault();
+// 		$(this).ajaxSubmit({
+// 			dataType: 'json',
+// 			async: false,
+// 			beforeSubmit: function (arr, $form) {
+// 			},
+// 			success: function (data_json) {
+// 				console.log("test");
+// 				console.log(data);
+// 				if (data) {
+// 					window.location = '/dishes/' + data_json;
+// 				} else {
+// 					// $('.new_item_image').attr('src', defaultImageUrl);
+// 				}
+// 			},
+// 			error: function (data) { 
+// 				// $('.new_item_image').attr('src', defaultImageUrl);
+// 			}
+// 		});
+// 	});
+	
+	$('.edit_dish').submit(function (ev) {
+		ev.preventDefault();
+		$(this).ajaxSubmit({
+			dataType: 'json',
+			async: false,
+			beforeSubmit: function (arr, $form) {
+			},
+			success: function (data) {
+				console.log(data)
+				if (data) {
+					window.location = '/dishes/' + data;
+				} else {
+					$('.new_item_image').attr('src', defaultImageUrl);
+				}
+			},
+			error: function (data) { 
+				$('.new_item_image').attr('src', defaultImageUrl);
+			}
+		});
+	});
+	
 
 	function readURL(input) {
 

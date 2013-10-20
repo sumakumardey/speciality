@@ -45,7 +45,7 @@
 					<% end %>
 				</div>
 				<div>
-					<p class="popular_tags_title margin-top-heading">Custom Filters</p>
+					<p class="popular_tags_title">Custom Filters</p>
 					<input class="tags_autocomplete tags_filter_autocomplete single-input-hack new_item_form_input">
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 				<input type="range" name="points"  id="range" value="50" min="1" max="1000">
 					<span class="price_span_rs">Rs </span>
 					<span class="price_span" id="range_value">50</span>
-					<p class="popular_tags_title">Where ?</p>
+					<p class="popular_tags_title padding-top-location-filter">Where ?</p>
 				<div class="location_css_search">
 					<input class="single-input-hack padding-top-location"  id="searchAutocomplete">
 				</div>
@@ -93,6 +93,7 @@
 	});
 	$(document).ready(function () {
 		addTag('<%= @onload_tags %>', true);
+		setLocation('<%= @onload_location %>', true);
 		$('#range').change(function()
 		{
 			$('#range_value').html($(this).val());
@@ -109,4 +110,5 @@
 			}
 		})
 	});
+	searchPage = true;
 </script>

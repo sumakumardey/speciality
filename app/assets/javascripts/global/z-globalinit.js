@@ -2,7 +2,8 @@ var searchTag,
 	searchRestaurant,
 	NO_RESULT_TEXT,
 	NO_RESULT_TEXT_ARRAY = [],
-	SEARCH_TYPE_MAPPING;
+	SEARCH_TYPE_MAPPING,
+	searchPage = false;
 NO_RESULT_TEXT = {
 	tag: "No tags found",
 	place: "No place found",
@@ -169,7 +170,17 @@ for (var text in NO_RESULT_TEXT) {
 				$(obj.currentTarget).val('');
 				return false;
 			}
-			window.location = '/search?search%5B' + SEARCH_TYPE_MAPPING[dataset] + '%5D=' + datum.value;
+			if (searchPage) {
+				if (SEARCH_TYPE_MAPPING[dataset] === 'tags') {
+					addTag(datum.value);
+				} else if (SEARCH_TYPE_MAPPING[dataset] === 'name') {
+					setName(datum.value);
+				} else if (SEARCH_TYPE_MAPPING[dataset] === 'location') {
+					setLocation(datum.value);
+				}
+			} else {
+				window.location = '/search?search%5B' + SEARCH_TYPE_MAPPING[dataset] + '%5D=' + datum.value;
+			}
 		});
 
 		$('.front_component').live('mouseenter', function () {
