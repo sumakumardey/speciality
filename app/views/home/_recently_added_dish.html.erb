@@ -21,14 +21,15 @@
 				<%= dish.restaurant_name.to_s.camelcase %></p>
 		</div>
 		<div class="back_component_color">
-			<p class="back_component_content"><span class="glyphicon glyphicon-heart icon_size"></span><%= (dish.avg_ratings || 0.0).to_f.round(2) %></p>
+			<p class="back_component_content"><span class=""></span><%= (dish.avg_ratings || 0.0).to_f.round(2) %></p>
 		</div>
 		<div class="back_component_white">
-			<p class="back_component_content"><span class="glyphicon glyphicon-usd icon_size"></span>
+			<p class="back_component_content"><span class=""></span>
 				<%=dish.cost || 0 %> $</p>
+
 		</div>
 		<div class="back_component_color">
-			<p class="back_component_content"><span class="glyphicon glyphicon-globe icon_size"></span><%= dish.location_address || "Velachery" %></p>
+			<p class="back_component_content"><span class=""></span><%= dish.location_address || "Velachery" %></p>
 		</div>
 		<div class="back_component_last back_center">
 			<!-- <button type="button" class="btn btn-success ">view more</button> -->

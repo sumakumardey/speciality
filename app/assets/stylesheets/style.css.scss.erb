@@ -555,7 +555,7 @@ body {
 .review_pagination_controller {
   background-color: white;
   width: 1140px;
-  height: 680px;
+  max-height: 680px;
   overflow: auto;
 }
 
@@ -674,6 +674,8 @@ body {
 .new_item_image {
   margin-left: 5px;
   margin-right: 0;
+	width: 143px;
+	height: 143px;
 }
 
 /* line 629, ../../app/assets/stylesheets/style.css.scss.erb */
@@ -754,6 +756,7 @@ body {
   width: 100%;
   padding-top: 10px;
   text-align: justify;
+  min-height: 100px;
 }
 
 /* line 712, ../../app/assets/stylesheets/style.css.scss.erb */
@@ -847,4 +850,72 @@ body {
   font-weight : 300px;
 }
 
+.item_same_line_info {
+  float: left;
+  width: 331px;
+  padding-top : 20px;
+}
 
+.info_poster
+{
+  font-size : 14px;
+  color : white;
+  font-weight : 100;
+}
+.info_poster_name
+{
+  font-size : 14px;
+  color : #72be60;
+  font-weight : 400;
+}
+
+.black_box
+{
+  background-color : #2e2e2e;
+  margin-top : 10px;
+  float: left;
+  padding-top : 10px;
+  width : 300px;
+  padding-bottom : 10px;
+  padding-left : 10px;
+  color : white;
+  font-size : 14px;
+  font-weight : 300;
+}
+.black_box_margin
+{
+  margin-right : 30px;
+}
+
+.black_box > div
+{
+  width : 30px !important;
+  display : inline;
+}
+.ratings_container {
+  display : inline-block;
+  margin-left: 60px;
+  vertical-align: top;
+}
+.dish_info_footer {
+  margin-top: 10px
+}
+
+.right_button_rate {
+  float: right;
+  margin-right: 15px;
+  margin-top: 30px;
+}
+
+.bg_image1
+{
+  background-image:url("<%= asset_path 'noodles-banner.png' %>");
+}
+.bg_image2
+{
+  background-image:url("<%= asset_path 'coffee-banner.png' %>");
+}
+.bg_image3
+{
+  background-image:url("<%= asset_path 'Watermelon-Banner.png' %>");
+}
