@@ -1,6 +1,7 @@
-var name, current_location, tags;
+var name, current_location, tags, maxValue;
 tags = tags || [];
 specialitySearch = function () {
+	var minValue = 1;
 	$.ajax({
 		url: '/search/',
 		dataType: 'script',
@@ -8,6 +9,8 @@ specialitySearch = function () {
 			'search[name]' : name,
 			'search[tags]' : tags,
 			'search[location]' : current_location,
+			'search[min_cost]' : minValue,
+			'search[max_cost]' : maxValue,
 		},
 		success: function (data) {
 			console.log(data);
@@ -15,14 +18,18 @@ specialitySearch = function () {
 	});
 };
 
-function addTag(value, initialize) {
+function addTag(value, initialize, customtype) {
 	if (tags.indexOf(value) === -1) { tags.push(value); }
+	customtype = customtype || "";
+	addFilterTagsUI(value, 'tag'+customtype);
 	if (!initialize) { specialitySearch(); }
 }
-function removeTag(value) {
+function removeTag(value, customtype) {
 	if (tags.indexOf(value) !== -1) {
 		tags.splice(tags.indexOf(value), 1);
 	}
+	customtype = customtype || "";
+	removeFilterTagsUI(value,'tag'+customtype);
 	specialitySearch();
 }
 function setName(value) {
@@ -31,6 +38,106 @@ function setName(value) {
 }
 function setLocation(value) {
 	current_location = value;
+	addFilterLocationUI(value, 'location');
+	specialitySearch();
+}
+function removeLocation(value) {
+	current_location = '';
+	removeFilterLocationUI(value, 'location');
+	specialitySearch();
+}
+function setCost(value) {
+	maxValue = value;
+	addFilterCostUI(value, 'cost');
+	specialitySearch();
+}
+function removeCost(value) {
+	maxValue = '';
+	removeFilterCostUI(value, 'cost');
 	specialitySearch();
 }
 
+function addFilterTagsUI(value, type) {
+	var id = value.split(' ').join('-'),
+		$element = $('.filter-tag-list').find('.' + type + '#' + id);
+	if (!$element.length){
+		var $span = $('<span/>').attr({
+			'class': 'badge ' + type,
+			'id': id,
+			'data-type': type
+		}).html(value);
+		$span.appendTo('.filter-tag-list');
+	}
+}
+function removeFilterTagsUI(value, type) {
+			console.log(value, type);
+	var id = value.split(' ').join('-'),
+		$element = $('.filter-tag-list').find('.' + type + '#' + id);
+
+	if ($element) { $element.remove(); }
+}
+function addFilterCostUI(value, type) {
+	var $element = $('.filter-tag-list').find('.' + type);
+	if (!$element.length){
+		var $span = $('<span/>').attr({
+			'class': 'badge ' + type,
+			'data-type': type
+		}).html('Cost from 1 to ' + value);
+		$span.appendTo('.filter-tag-list');
+	} else {
+		$element.html('Cost from 1 to ' + value);
+	}
+}
+function removeFilterCostUI(value, type) {
+	var $element = $('.filter-tag-list').find('.' + type);
+	if ($element){ $element.remove(); }
+}
+function addFilterLocationUI(value, type) {
+	var $element = $('.filter-tag-list').find('.' + type);
+	if (!$element.length){
+		var $span = $('<span/>').attr({
+			'class': 'badge ' + type,
+			'data-type': type
+		}).html(value);
+		$span.appendTo('.filter-tag-list');
+	} else {
+		$element.html(value);
+	}
+}
+function removeFilterLocationUI(value, type) {
+	var $element = $('.filter-tag-list').find('.' + type);
+	if ($element){ $element.remove(); }
+}
+function updateSelect2(value) {
+	var valuesArray = $('input.tags_filter_autocomplete').select2('val');
+	if (valuesArray.indexOf(value) !== -1) {
+		valuesArray.splice(valuesArray.indexOf(value), 1);
+	}
+	$('input.tags_filter_autocomplete').select2('data', valuesArray);
+}
+$(document).ready(function () {
+	$('.filter-tag-list').on('click', '.badge', function () {
+		var $this = $(this),
+			type = $this.data('type'),
+			value = $this.html();
+		if (type === 'tag') {
+			removeTag(value);
+		} else if (type === 'cost') {
+			removeCost(value);
+		} else if (type === 'location') {
+			removeLocation(value);
+		} else if (type === 'tagSelect2') {
+			removeTag(value, "Select2");
+			updateSelect2(value);
+		}
+	});
+	$('.tags_filter_autocomplete').on('change', function (e) {
+		if (e.added) {
+			addTag(e.added.text, false, 'Select2');
+		} else if (e.removed) {
+			removeTag(e.removed.text, "Select2");
+		}
+		
+	})
+	
+});
