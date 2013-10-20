@@ -26,6 +26,7 @@ Speciality::Application.routes.draw do
 
   resources :dishes do
     get :show_image
+    get :show_small_image
   end
 
   resources :users

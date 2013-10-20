@@ -14,7 +14,8 @@
 						<div class="dish_info_footer">
 							<div class="item_same_line_info">
 								<span class="info_poster">Posted by : </span>
-								<span class="info_poster_name"><%= @dish.user.name %></span>
+                <span class="info_poster_name"><%= link_to @dish.user.name,
+                 user_path(@dish.user) %></span>
 							</div>
 							<div class="item_same_line_info">
 								<span class="info_poster">Tags : </span>

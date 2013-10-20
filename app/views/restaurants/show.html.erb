@@ -1,15 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="container container_item_page white_background">
 
-<p>
-  <b>Name:</b>
-  <%= @restaurant.name %>
-</p>
+	<div class="col-lg-12 user_profile_page ">
+    <div class="row row_modify">
+    <div class="col-lg-3 ">
+    <%= rendering_small_image_data(@restaurant.dishes.first, "user_profile_image ") %>
+    <span class="user_name_profile" ><%= @restaurant.name %></span>
+    </div>
+    <div class="col-lg-4 col-lg-offset-4 user_stats">
+      <span id="user_rating" class="user_stats_span"><%= res_ratings(@restaurant) %> ratings</span>
+      <span id="user_reviews" class="user_stats_span"><%= res_review(@restaurant) %> Reviews</span>
+      <span id="user_points" class="user_stats_span"><%= @restaurant.dishes.count %> Dishes</span>
+    </div>
+  </div>
+  </div>
 
-<p>
-  <b>Location:</b>
-  <%= @restaurant.location_id %>
-</p>
+	<p class=" text-center res_font">Top Dishes In The Restaurant</p>
+  <div class="col-lg-12 col-lg-12-modify">
+      <%= render :partial => 'home/recently_added_dish',
+        :collection => @restaurant.dishes, :as => :dish %>
+  </div>
+</div>
 
+</div>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<script>
+  var url = document.location.toString();
+  if (url.match('#')) {
+    $('.nav-tabs a[href=#' + url.split('#')[1]+']').tab('show');
+  }
+
+  $('.nav-tabs a').on('shown', function(e) {
+    window.location.hash = e.target.hash;
+  });
+
+  $(function() {
+    $('#myTab a:last').tab('show');
+  })
+</script>
