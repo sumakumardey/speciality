@@ -1,4 +1,4 @@
-<% @new_dish = @dish %>
+<% @new_dish = @dish || Dish.new %>
 <div class="modal fade" id="edit_item_modal">
 		<div class="modal-dialog ">
 			<div class="modal-content add_item_container">
