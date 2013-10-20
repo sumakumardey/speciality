@@ -117,6 +117,7 @@ function addFilterLocationUI(value, type) {
 function removeFilterLocationUI(value, type) {
 	var $element = $('.filter-tag-list').find('.' + type);
 	if ($element){ $element.remove(); }
+	$('#searchAutocomplete').val('');
 	showOrHideFilters();
 }
 
