@@ -32,6 +32,7 @@ class SearchController < ApplicationController
 	end
 
 	def search_with_location
+		@onload_location = params[:search][:location]
 		Dish.search("#{params[:search][:location]}", fields:[:location],partial:true).collect(&:id)
 	end
 

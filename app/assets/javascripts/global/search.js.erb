@@ -40,10 +40,13 @@ function setName(value) {
 	name = value;
 	specialitySearch();
 }
-function setLocation(value) {
+function setLocation(value, initialize) {
+	if (value == undefined || value == "") {
+		return false;
+	}
 	current_location = value;
 	addFilterLocationUI(value, 'location');
-	specialitySearch();
+	if (!initialize) { specialitySearch(); }
 }
 function removeLocation(value) {
 	current_location = '';
@@ -112,6 +115,7 @@ function removeFilterLocationUI(value, type) {
 	var $element = $('.filter-tag-list').find('.' + type);
 	if ($element){ $element.remove(); }
 }
+
 function updateSelect2(value) {
 	var valuesArray = $('input.tags_filter_autocomplete').select2('val');
 	if (valuesArray.indexOf(value) !== -1) {
