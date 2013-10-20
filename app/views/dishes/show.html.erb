@@ -11,12 +11,28 @@
 						<p class="item_title"><%= @dish.name %></p>
 						<p class="item_restaurant"><%= @dish.restaurant_name %></p>
 						<p class="item_description_content"><%= @dish.description %></p>
-						<div class="">
-							<% (@dish.tags || []).each do |tag| %>
-							<span class="badge"><b><%= tag.name %></b></span>
-							<% end %>
+						<div class="dish_info_footer">
+							<div class="item_same_line_info">
+								<span class="info_poster">Posted by : </span>
+								<span class="info_poster_name"><%= @dish.user.name %></span>
+							</div>
+							<div class="item_same_line_info">
+								<span class="info_poster">Tags : </span>
+								<% (@dish.tags || []).each do |tag| %>
+								<span class="info_poster_name"><%= tag.name %></span>
+								<% end %>
+							</div>
+							<div class=" black_box black_box_margin">
+								<span>Rate this dish<span>
+								<div class="ratings_container">
+									<%= rating_stars(@dish) %>
+								</div>
+							</div>
+							<div class="black_box">
+								<span class="info_poster">WRITE A REVIEW </span>
+								<span class="info_poster_name" style="margin-left:40px;margin-right:20px;"><%= @dish.reviews.count%> SO FAR</span>
+							</div>
 						</div>
-						<%= rating_stars(@dish) %>
 					</div>
 					<div class="item_properties_div">
 						<div class="item_description_div_points">
@@ -24,9 +40,6 @@
 								<span class="ratings_average"><%= @dish.avg_ratings || 0.0 %></span></p>
 							<p class="item_description_div_rating">
 								<span class="no_of_people_rated"><%= @dish.no_of_ratings || 0 %></span> rating</p>
-						</div>
-						<div class="item_description_div_cost">
-							<p class="item_description_div_cost_value">Rs 100</p>
 						</div>
 						<div class="item_description_div_cost">
 							<p class="item_description_div_cost_value">Rs 100</p>
@@ -70,8 +83,9 @@
 			<!-- <textarea class="commment_textarea"></textarea>  -->
 			<%= new_review.text_area :description, :class => "commment_textarea" %>
 			<%= new_review.hidden_field :dish_id, :value => @dish.id %>
-      <%= new_rating %>
 			<button class="btn btn-success right_button">SUBMIT REVIEW</button>
+				<%= new_rating %>
+			<span class="right_button_rate"><b>Rate this dish</b></span>
 			<% end %>
 		</div>
 
@@ -94,9 +108,16 @@ $('.map_opener').click(function()
 		// var height = $('.section_item').css('height') + $('.map').css('height');
 		$('.map').slideDown();
 		// $('.section_item').css('height',height);
+
+		//If opening for the first Time, initialize GMaps
+		if (!$('.map').data('rendered')) {
+			showLocationOnMap("<%=@dish.location.latitude%>","<%=@dish.location.longitude%>");
+			$('.map').data('rendered', true);
+		}
 	}
 
 	return false;
 });
-
 </script>
+
+
