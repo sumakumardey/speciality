@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_filter :load_dish
+
   # GET /reviews/1/edit
   def edit
     @review = @dish.reviews.find(params[:id])
