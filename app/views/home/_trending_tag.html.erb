@@ -2,13 +2,15 @@
 <% score = tag_score_array.last %>
 <% dish = @dishes.select{ |dish| dish.tags.include? tag }.first %>
 <div class="col-md-3 component_front  <%= ((tag_score_array_counter % 4) == 3) ? "" : "component_margin_right" %> component_margin_bottom ">
-	<div class="front_component">
-    <%= rendering_image_data(dish) %>
-		<div class="component-caption">
-			<p class="tag_name"><%= tag.name.camelcase %></p>
+	<a href='<%= search_path('search[tags]' => tag.name) %>'>
+		<div>
+			<%= rendering_image_data(dish) %>
+			<div class="component-caption">
+				<p class="tag_name"><%= tag.name.camelcase %></p>
+			</div>
 		</div>
-	</div>
-	<div class="back_component">
+	</a>
+	<!-- <div class="back_component">
 		<div class="back_component_first">
 			<p class="back_component_first_heading text-center"><%= dish.name.to_s.camelcase %></p>
 			<p class="back_component_first_content text-center">
@@ -24,8 +26,7 @@
 			<p class="back_component_content"><span class=""></span><%= dish.location_address || "Velachery" %></p>
 		</div>
 		<div class="back_component_last back_center">
-			<!-- <button type="button" class="btn btn-success ">view more</button> -->
 			<%= link_to "View more", dish_path(dish) %>
 		</div>
-	</div>
+	</div> -->
 </div>

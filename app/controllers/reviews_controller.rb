@@ -1,37 +1,4 @@
 class ReviewsController < ApplicationController
-  before_filter :load_dish
-  # GET /reviews
-  # GET /reviews.json
-  def index
-    @reviews = @dish.reviews.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @reviews }
-    end
-  end
-
-  # GET /reviews/1
-  # GET /reviews/1.json
-  def show
-    @review = @dish.reviews.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @review }
-    end
-  end
-
-  # GET /reviews/new
-  # GET /reviews/new.json
-  def new
-    @review = @dish.reviews.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @review }
-    end
-  end
 
   # GET /reviews/1/edit
   def edit

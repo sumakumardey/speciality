@@ -39,18 +39,6 @@ class HomeController < ApplicationController
 			}
 		end
 	end
-
-	def trending_tags
-		
-	end
-
-	def recently_added
-
-	end
-
-	def top_foodies
-		
-	end
 	private
 		def load_recent_dishes
 			@dishes = Dish.find_recent_dishes(20).include_tags
@@ -75,5 +63,6 @@ class HomeController < ApplicationController
         [user, user.calculate_score]
       end
       @top_foodies = list.sort_by(&:last).reverse[0..3]
+      @top_foodies
     end
 end

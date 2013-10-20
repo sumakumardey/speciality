@@ -1,5 +1,21 @@
 var searchTag,
-	searchRestaurant;
+	searchRestaurant,
+	NO_RESULT_TEXT,
+	NO_RESULT_TEXT_ARRAY = [],
+	SEARCH_TYPE_MAPPING;
+NO_RESULT_TEXT = {
+	tag: "No tags found",
+	place: "No place found",
+	dish: "No dishes found"
+}
+SEARCH_TYPE_MAPPING = {
+	tags: 'tags',
+	places: 'location',
+	dishes: 'name'
+}
+for (var text in NO_RESULT_TEXT) {
+	NO_RESULT_TEXT_ARRAY.push(NO_RESULT_TEXT[text]);
+}
 (function ($) {
 	searchTag = function (name) {
 		$.ajax({
@@ -110,7 +126,7 @@ var searchTag,
 			remote: {
 				url: '/dish_autocompleter/?search=%QUERY',
 				filter: function(response){
-					return response.dishes.data.length ? response.dishes.data : ["No dishes found"] ;
+					return response.dishes.data.length ? response.dishes.data : [NO_RESULT_TEXT.dish] ;
 				},
 				cache: false
 			},
@@ -124,7 +140,7 @@ var searchTag,
 			remote: {
 				url: '/tag_autocompleter/?search=%QUERY',
 				filter: function(response){
-					return response.tags.data.length ? response.tags.data : ["No tags found"] ;
+					return response.tags.data.length ? response.tags.data : [NO_RESULT_TEXT.tag] ;
 				},
 				cache: false
 			},
@@ -138,7 +154,7 @@ var searchTag,
 			remote: {
 				url: '/place_autocompleter/?search=%QUERY',
 				filter: function (response) {
-					return response.places.data.length ? response.places.data : ["No place found"] ;
+					return response.places.data.length ? response.places.data : [NO_RESULT_TEXT.place] ;
 				},
 				cache: false
 			},
@@ -147,8 +163,14 @@ var searchTag,
 			engine: MyEngine,
 			timeout: 1000
 		}
-		]);
-		
+		]).bind('typeahead:selected', function (obj, datum, dataset) {
+			if ( $.inArray(datum.value, NO_RESULT_TEXT_ARRAY) > -1) {
+				$(obj.currentTarget).val('');
+				return false;
+			}
+			window.location = '/search?search%5B' + SEARCH_TYPE_MAPPING[dataset] + '%5D=' + datum.value;
+		});
+
 		$('.front_component').mouseenter(function () {
 			var parent = $(this).parent();
 			$(this).fadeOut(100, function () { 
