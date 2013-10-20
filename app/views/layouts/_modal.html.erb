@@ -7,9 +7,9 @@
 					<p class="new-item-heading">Add a new item to Speciality</p>
 				</div>
 				<div class="modal-body">
-					<%= form_for(@new_dish) do |f| %>
-						<% if @new_dish.errors.any? %>
+					<%= form_for(@new_dish, remote: true, format: :js) do |f| %>
 						<div id="error_explanation">
+						<% if @new_dish.errors.any? %>
 							<h2>
 								<%= pluralize(@new_dish.errors.count, "error") %> prohibited this dish from being saved:</h2>
 							<ul>
@@ -17,8 +17,8 @@
 									<li><%= msg %></li>
 								<% end %>
 							</ul>
-						</div>
 						<% end %>
+						</div>
 						<div class="col-lg-4 new_item_image_container">
 								<h5 style="text-align:center;">PHOTO</h5> 
 								<img src="<%= asset_path 'default-new-item.png' %>" class="new_item_image">
@@ -38,10 +38,6 @@
 									<%= f.text_field :name, :class=>"form-control new_item_form_input" %>
 								</div>
 								<div class="form-group">
-									<label for="exampleInputEmail1">Email address</label>
-									<input type="email" class="form-control new_item_form_input " id="exampleInputEmail2" placeholder="Enter email">
-								</div>
-								<div class="form-group">
 									<%= f.label :description %>
 									<%= f.text_area :description, :class=>"new_item_txt" %>
 								</div>
@@ -59,6 +55,10 @@
 									<%= f.text_field :tag_names, :class => "tags_autocomplete single-input-hack new_item_form_input",
 									:'data-value' => @new_dish.tags.map(&:name).join(","), :value => " " %>
 								</div>
+                <div class="form-group">
+                  <%= label_tag 'Give your rating' %>
+                  <%= new_rating %>
+                </div>
 								<br/>
 					</div>
 				</div>

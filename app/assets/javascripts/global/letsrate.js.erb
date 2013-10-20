@@ -30,4 +30,16 @@ $(function(){
 				});
 		}
 	});
+
+	$(".new_star").raty({
+		score: function(){
+			return $(this).attr('data-rating')
+		},
+		number: function() {
+			return $(this).attr('data-star-count')
+		}
+	});
+
+  $(".new_star").raty('score', 3);
+
 });

@@ -12,6 +12,12 @@ module ApplicationHelper
     end
   end
 
+  def new_rating
+    content_tag :div, "", "data_dimension" => "awesomeness",
+      :class => "new_star", "data-rating" => 0, "data-classname" => "User",
+      "data-star-count" => 5
+  end
+
   def awesomeness_qty(dish)
     content_tag :span, :class => "no_of_people_rated" do
       "#{dish.no_of_ratings.to_i}"
