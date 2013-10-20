@@ -36,7 +36,7 @@ module ApplicationHelper
 
   def rendering_image_data(item, css="")
     if item.avatar.blank? || item.avatar.file_contents(:small).blank?
-      image_tag asset_path "item-filler.png", :class => css
+      image_tag asset_path("item-filler.png"), :class => css
     else
       image_tag dish_show_image_path(item.id), :class => css
     end

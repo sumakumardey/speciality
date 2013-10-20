@@ -21,7 +21,7 @@
 						</div>
 						<div class="col-lg-4 new_item_image_container">
 								<h5 style="text-align:center;">PHOTO</h5> 
-								<img src="<%= asset_path 'default-new-item.png' %>" class="new_item_image">
+								<%= rendering_image_data(@new_dish, "new_item_image") %>
 								<div class="custom-file-upload btn btn-success new_item_upload_button" >
 	                               <div class="file-upload">
 	                                	<span class="file-upload-text"><%= 'Upload Image' %></span>
