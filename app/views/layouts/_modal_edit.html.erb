@@ -4,7 +4,7 @@
 			<div class="modal-content add_item_container">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<p class="new-item-heading">Add a new item to Speciality</p>
+          <p class="new-item-heading">Editing "<%= @new_dish.name %>"</p>
 				</div>
 				<div class="modal-body">
 					<%= form_for(@new_dish, remote: true, format: :json, multipart: true) do |f| %>
@@ -21,7 +21,7 @@
 						</div>
 						<div class="col-lg-4 new_item_image_container">
 								<h5 style="text-align:center;">PHOTO</h5> 
-								<img src="<%= asset_path 'default-new-item.png' %>" class="new_item_image">
+								<%= rendering_image_data(@new_dish, "new_item_image") %>
 								<div class="custom-file-upload btn btn-success new_item_upload_button" >
 	                               <div class="file-upload">
 	                                	<span class="file-upload-text"><%= 'Upload Image' %></span>
@@ -34,33 +34,33 @@
 						</div>
 						<div class="col-lg-8 new_item_details_container">
 								<div class="form-group">
-									<h5>NAME</h5>
+									<%= f.label :name, "NAME" %>
 									<%= f.text_field :name, :class=>"form-control new_item_form_input" %>
 								</div>
 								<div class="form-group">
-									<%= f.label :description %>
+									<%= f.label :description, "DESCRIPTION" %>(max 300)
 									<%= f.text_area :description, :class=>"new_item_txt" %>
-								</div>
-								<div class="form-group">
-									<%= f.label :restaurant_name , :class => "restaurant_label" %><br />
-									<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete single-input-hack new_item_form_input",
-									:'data-id' => @new_dish.restaurant_id, :'data-text' => @new_dish.restaurant_name  %>
-								</div>
-								<div class="form-group">
-									<%= f.label :price %>
-									<%= f.text_field :cost, :class=>"form-control new_item_form_input" ,:placeholder => "Enter in Dollars"%>
-								</div>
-								<div class="form-group" >
-									<label for="exampleInputEmail1">Address</label>
-									<%= render :partial =>"/locations/form" %>
 								</div>
 								<div class="form-group">
 									<%= f.label :tag_names , :style => "padding-top: 10px;"%><br />
 									<%= f.text_field :tag_names, :class => "tags_autocomplete single-input-hack new_item_form_input",
 									:'data-value' => @new_dish.tags.map(&:name).join(","), :value => " " %>
 								</div>
+								<div class="form-group">
+									<%= f.label :restaurant_name, "RESTAURANT NAME", :class => "restaurant_label" %><br />
+									<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete single-input-hack new_item_form_input",
+									:'data-id' => @new_dish.restaurant_id, :'data-text' => @new_dish.restaurant_name  %>
+								</div>
+								<div class="form-group" >
+									<label for="exampleInputEmail1">ADDRESS</label>
+									<%= render :partial =>"/locations/form",:locals => { :dish => @new_dish } %>
+								</div>
+								<div class="form-group">
+									<%= f.label :price, "PRICE" %>
+									<%= f.text_field :cost, :class=>"form-control new_item_form_input" ,:placeholder => "Enter in Dollars"%>
+								</div>
                 <div class="form-group modal_rating_form">
-                  <%= label_tag 'Give your rating' %>
+                  <%= label_tag 'RATE THIS DISH' %>
 			      <%= new_rating %>                 
                 </div>
 								<br/>

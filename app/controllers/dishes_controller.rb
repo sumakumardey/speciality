@@ -82,7 +82,7 @@ class DishesController < ApplicationController
 		@dish = current_or_guest_user.dishes.find(params[:id])
 		@dish.build_attachment(:avatar => attachment) unless attachment.blank?
 		@dish.restaurant = @restaurant
-    
+    build_location
 		respond_to do |format|
 			if @dish.update_attributes(params[:dish])
 				format.json { render json: @dish.id }

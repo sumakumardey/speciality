@@ -9,7 +9,7 @@
 			<div class="white_border_rating ">
 				<div class="rating_div">
 					<img src="<%= asset_path 'component-vertical.png' %>" class="vertical_line">
-					<p class="dish_rating"><%= (dish.avg_ratings || 0.0).to_f.round(2) %></p>
+					<p class="dish_rating"><%= (dish.avg_ratings || 0.0).to_f.round(1) %></p>
 				</div>
 			</div>
 		</div>
@@ -22,14 +22,14 @@
 		</div>
 		<div class="back_component_color">
 			<p class="back_component_content"><span class="dish-icon rating-icon"></span>
-				<%= (dish.avg_ratings || 0.0).to_f.round(2) %></p>
+				<%= (dish.avg_ratings || 0.0).to_f.round(1) %></p>
 		</div>
 		<div class="back_component_white">
 			<p class="back_component_content"><span class="dish-icon cost-icon"></span>
 				<%= dish.cost || 0 %> </p>
 		</div>
 		<div class="back_component_color">
-			<p class="back_component_content ellipsis"><span class="dish-icon location-icon"></span><%= dish.location_address || "Velachery" %></p>
+			<p class="back_component_content ellipsis"><span class="dish-icon location-icon"></span><%= dish.location_address %></p>
 		</div>
 		<div class="back_component_last back_center">
 			<!-- <button type="button" class="btn btn-success ">view more</button> -->

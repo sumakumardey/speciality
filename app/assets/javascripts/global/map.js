@@ -1,6 +1,6 @@
 // This example displays an address form, using the autocomplete feature
 // of the Google Places API to help users fill in the information.
-var placeSearch, autocomplete;
+var placeSearch, autocomplete, edit_autocomplete;
 var componentForm = {
 	street_number: 'short_name',
 	route: 'long_name',
@@ -21,10 +21,24 @@ function initialize_map() {
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
 		fillInAddress();
 	});
+	edit_autocomplete = new google.maps.places.Autocomplete(
+	/** @type {HTMLInputElement} */(document.getElementById('edit_autocomplete')),
+	{ types: ['geocode'] });
+	// When the user selects an address from the dropdown,
+	// populate the address fields in the form.
+	google.maps.event.addListener(edit_autocomplete, 'place_changed', function() {
+		fillInAddressEdit();
+	});
 }
 
 // The START and END in square brackets define a snippet for our documentation:
 // [START region_fillform]
+function fillInAddressEdit() {
+	var place = edit_autocomplete.getPlace();
+	console.log(place);
+	document.getElementById("edit_latitude").value =  place.geometry.location["lb"];
+	document.getElementById("edit_longitude").value =  place.geometry.location["mb"];
+}
 function fillInAddress() {
 	// Get the place details from the autocomplete object.
 	var place = autocomplete.getPlace();
@@ -67,6 +81,17 @@ function geolocate() {
 		});
 	}
 }
+function geolocateEdit() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			var geolocation = new google.maps.LatLng(
+				position.coords.latitude, position.coords.longitude);
+				edit_autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
+					geolocation));
+		});
+	}
+}
+
 $(document).ready(function () {
 	initialize_map();
 })
