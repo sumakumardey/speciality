@@ -67,7 +67,7 @@ class HomeController < ApplicationController
 		end
 
     def recent_users
-      @recent_users = User.find_recent_users(20)
+      @recent_users = User.find(:all, :conditions => ["created_at >= ?", 2.week.ago])
     end
 
     def top_foodies

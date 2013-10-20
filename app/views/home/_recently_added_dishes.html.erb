@@ -4,6 +4,6 @@
 	</div>
 </div>
 <div class="row">
-	<%= render :partial => 'recently_added_dish', :collection => @recently_added_dishes,
+	<%= render :partial => 'home/recently_added_dish', :collection => (@dishes || @recently_added_dishes),
 	:as => :dish %>
 </div>

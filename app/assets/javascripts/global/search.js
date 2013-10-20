@@ -3,7 +3,7 @@ var name, current_location;
 specialitySearch = function () {
 	$.ajax({
 		url: '/search/',
-		dataType: 'json',
+		dataType: 'script',
 		data: {
 			'search[name]' : name,
 			'search[tags]' : tags,

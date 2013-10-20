@@ -5,6 +5,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user
       sign_in_and_redirect @user, :event => :authentication
       set_flash_message(:notice, :success, :kind => "Twitter") if is_navigational_format?
+		else
+			redirect_to root_url
     end
   end
 
@@ -14,6 +16,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user
       sign_in_and_redirect @user, :event => :authentication
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
+		else
+			redirect_to root_url
     end
   end
+	
+	def failure
+		redirect_to root_url
+	end
 end
