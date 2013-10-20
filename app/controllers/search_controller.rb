@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 		allowed_filters = [:tags,:location,:name]
 		@data = []
 		flag = false
-		params[:search].each_pair do |search_filter, search_value|
+		(params[:search]|| {}).each_pair do |search_filter, search_value|
 			next unless allowed_filters.include?(search_filter.to_sym)
 			if flag && search_value.present?
 				@data = @data & self.send("search_with_#{search_filter}")
