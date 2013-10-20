@@ -94,6 +94,7 @@
 	$(document).ready(function () {
 		addTag('<%= @onload_tags %>', true);
 		setLocation('<%= @onload_location %>', true);
+		name = '<%= @onload_name %>';
 		$('#range').change(function()
 		{
 			$('#range_value').html($(this).val());
