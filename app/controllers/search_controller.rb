@@ -27,7 +27,7 @@ class SearchController < ApplicationController
 	private
 
 	def search_with_tags
-		@tags = params[:search][:tags]
+		@onload_tags = params[:search][:tags]
 		Dish.search("#{params[:search][:tags]}", fields:[:tag],partial:true).collect(&:id)
 	end
 

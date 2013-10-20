@@ -91,7 +91,7 @@
 		
 	});
 	$(document).ready(function () {
-		addTag('<%= @tags %>', true);
+		addTag('<%= @onload_tags %>', true);
 		$('#range').change(function()
 		{
 			$('#range_value').html($(this).val());

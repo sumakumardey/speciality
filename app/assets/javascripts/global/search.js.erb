@@ -20,6 +20,9 @@ specialitySearch = function () {
 };
 
 function addTag(value, initialize, customtype) {
+	if (value == undefined || value == "") {
+		return false;
+	}
 	if (tags.indexOf(value) === -1) { tags.push(value); }
 	customtype = customtype || "";
 	addFilterTagsUI(value, 'tag'+customtype);
