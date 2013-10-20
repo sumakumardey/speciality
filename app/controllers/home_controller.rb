@@ -55,24 +55,14 @@ class HomeController < ApplicationController
 		end
 
     def recent_users
-      Rails.logger.error "*********** RECENT USERS ********************"
-      
       @recent_users = User.find(:all, :conditions => ["created_at >= ?", 2.week.ago])
-      Rails.logger.error "#{@recent_users.inspect}"
     end
 
     def top_foodies
-
       list = @recent_users.map do |user| 
-      	Rails.logger.error "************* POPULATING LIST ******************"
-        Rails.logger.error "#{user.inspect}"
-        Rails.logger.error "#{user.calculate_score.inspect}"
         [user, user.calculate_score]
       end
-      
-      Rails.logger.error "************* TOP FODDIES ******************"
       @top_foodies = list.sort_by(&:last).reverse[0..3]
-      Rails.logger.error "#{@top_foodies.inspect}"
       @top_foodies
     end
 end
