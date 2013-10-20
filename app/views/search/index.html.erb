@@ -27,37 +27,41 @@
 			
 		</div>
 		<div class="col-lg-2 col-lg-offset-4 row_search_page">
-		<button class="btn btn-success search_filter_opener">Filter</button>
+			<span>
+				 <img src="<%= asset_path 'dollar-png.png'%>" class='sort-dishes' data-value='cost'>
+				 <img src="<%= asset_path 'rating-png.png'%>" class='sort-dishes' data-value='total_ratings'>
+				 <img src="<%= asset_path 'location-png.png'%>" class='sort-dishes' data-value='location'>
+			</span>
+			<button class="btn btn-success search_filter_opener">Filter</button>
 		</div>
 
 			<div class="row_search_page col-lg-6 filter_option_selector_container">
 				<p class="popular_tags_title">Popular Tags</p>
 				<div class="popular_tags"> 
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-					<span class="popular_tag">Brazilian</span>
-
+					<% @trending_tags_array.each do|tags_array| %>
+						<span class="popular_tag <%="active" if @tags.include? tags_array[0].name %>">
+							<%= tags_array[0].name %>
+						</span>
+					<% end %>
+				</div>
+				<div>
+					<p class="popular_tags_title margin-top-heading">Custom Filters</p>
+					<input class="tags_autocomplete tags_filter_autocomplete single-input-hack new_item_form_input">
 				</div>
 			</div>
 			<div class="row_search_page col-lg-6 filter_option_selector_container">
 				<p class="popular_tags_title">How much ?</p>
 				<input type="range" name="points"  id="range" value="50" min="1" max="1000">
-				<div> 
-					<span>Rs </span><span id="range_value">50</span>
+					<span class="price_span_rs">Rs </span>
+					<span class="price_span" id="range_value">50</span>
+					<p class="popular_tags_title">Where ?</p>
+				<div class="location_css_search">
+					<input class="single-input-hack padding-top-location"  id="searchAutocomplete">
 				</div>
-
 			</div>
-	<div class="col-lg-9 search_tag_list_container">
-		You are currently looking for <span class="badge" id="search_list_tag">dfisldfsd</span><span class="badge" id="search_list_cost">100</span> <span class="badge" id="search_list_dist">adyar</span>  
+
+	<div class="col-lg-9 search_tag_list_container filter-tag-list">
+		You are currently looking for  
 	</div>
 
 		<div class="col-lg-12 search_dish_container">
@@ -88,19 +92,20 @@
 		
 	});
 	$(document).ready(function () {
-		addTag('<%= @tags %>', true);
+		addTag('<%= @onload_tags %>', true);
 		$('#range').change(function()
 		{
-			console.log('The value os ');
 			$('#range_value').html($(this).val());
+			setCost($(this).val());
 		})
 		$('.popular_tag').click(function () {
 			var $this = $(this);
-			$this.toggleClass("active");
+				$this.toggleClass("active"),
+				text = $this.text().trim();
 			if ($this.hasClass("active")) {
-				console.log('selected' + $this.val());
+				addTag(text);
 			} else {
-				console.log('unselected' + $this.val());
+				removeTag(text);
 			}
 		})
 	});

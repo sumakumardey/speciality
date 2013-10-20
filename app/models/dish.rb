@@ -22,7 +22,7 @@ class Dish < ActiveRecord::Base
 	scope :find_recent_dishes, lambda { |items|
 		order("created_at DESC").limit(items)
 	}
-	scope :include_tags, includes([:tags, :restaurant])
+	scope :include_tags, includes([:tags, :restaurant, :attachment, :location])
 
   after_create :add_dish_rating
 
