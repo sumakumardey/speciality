@@ -7,6 +7,6 @@ module UsersHelper
     dish_rated_ids = dish_rated_ids.concat(dish_review_ids)
     dish_rated_ids = dish_rated_ids.uniq
 
-    Dish.find(:all, :conditions => ["id IN (?) and user_id != ?",dish_rated_ids,user.id])
+    Dish.find(:all, :conditions => ["id IN (?) ",dish_rated_ids])
   end
 end
