@@ -74,13 +74,14 @@ function addFilterTagsUI(value, type) {
 		}).html(value);
 		$span.appendTo('.filter-tag-list');
 	}
+	showOrHideFilters();
 }
 function removeFilterTagsUI(value, type) {
-			console.log(value, type);
 	var id = value.split(' ').join('-'),
 		$element = $('.filter-tag-list').find('.' + type + '#' + id);
 
 	if ($element) { $element.remove(); }
+	showOrHideFilters();
 }
 function addFilterCostUI(value, type) {
 	var $element = $('.filter-tag-list').find('.' + type);
@@ -93,10 +94,12 @@ function addFilterCostUI(value, type) {
 	} else {
 		$element.html('Cost from 1 to ' + value);
 	}
+	showOrHideFilters();
 }
 function removeFilterCostUI(value, type) {
 	var $element = $('.filter-tag-list').find('.' + type);
 	if ($element){ $element.remove(); }
+	showOrHideFilters();
 }
 function addFilterLocationUI(value, type) {
 	var $element = $('.filter-tag-list').find('.' + type);
@@ -109,10 +112,13 @@ function addFilterLocationUI(value, type) {
 	} else {
 		$element.html(value);
 	}
+	showOrHideFilters();
 }
 function removeFilterLocationUI(value, type) {
 	var $element = $('.filter-tag-list').find('.' + type);
 	if ($element){ $element.remove(); }
+	$('#searchAutocomplete').val('');
+	showOrHideFilters();
 }
 
 function updateSelect2(value) {
@@ -125,6 +131,10 @@ function updateSelect2(value) {
 function setSort(value) {
 	sort = value;
 	specialitySearch();
+}
+function showOrHideFilters() {
+	var show = $('.filter-tag-list span').length ? true : false;
+	$('.filter-tag-list').toggle(show);
 }
 $(document).ready(function () {
 	$('.filter-tag-list').on('click', '.badge', function () {
