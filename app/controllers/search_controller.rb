@@ -38,7 +38,7 @@ class SearchController < ApplicationController
 
   def search_with_min_cost_and_max_cost
     if params[:search][:min_cost] && params[:search][:max_cost]
-      Dish.find(:all, :conditions => ["id in (?) and cost >= ? and cost <= ?",@data,params[:search][:min_cost],params[:search][:max_cost])	
+      Dish.find(:all, :conditions => ["id in (?) and cost >= ? and cost <= ?",@data,params[:search][:min_cost],params[:search][:max_cost]])	
     else
       Dish.find_all_by_id(@data)
     end
