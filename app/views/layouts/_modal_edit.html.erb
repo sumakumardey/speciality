@@ -4,7 +4,7 @@
 			<div class="modal-content add_item_container">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<p class="new-item-heading">Add a new item to Speciality</p>
+          <p class="new-item-heading">Editing "<%= @new_dish.name %>"</p>
 				</div>
 				<div class="modal-body">
 					<%= form_for(@new_dish, remote: true, format: :json, multipart: true) do |f| %>
@@ -21,7 +21,7 @@
 						</div>
 						<div class="col-lg-4 new_item_image_container">
 								<h5 style="text-align:center;">PHOTO</h5> 
-								<img src="<%= asset_path 'default-new-item.png' %>" class="new_item_image">
+								<%= rendering_image_data(@new_dish, "new_item_image") %>
 								<div class="custom-file-upload btn btn-success new_item_upload_button" >
 	                               <div class="file-upload">
 	                                	<span class="file-upload-text"><%= 'Upload Image' %></span>
@@ -38,7 +38,7 @@
 									<%= f.text_field :name, :class=>"form-control new_item_form_input" %>
 								</div>
 								<div class="form-group">
-									<%= f.label :description, "DESCRIPTION" %>
+									<%= f.label :description, "DESCRIPTION" %>(max 300)
 									<%= f.text_area :description, :class=>"new_item_txt" %>
 								</div>
 								<div class="form-group">
@@ -53,7 +53,7 @@
 								</div>
 								<div class="form-group" >
 									<label for="exampleInputEmail1">ADDRESS</label>
-									<%= render :partial =>"/locations/form" %>
+									<%= render :partial =>"/locations/form", :dish => @new_dish %>
 								</div>
 								<div class="form-group">
 									<%= f.label :price, "PRICE" %>

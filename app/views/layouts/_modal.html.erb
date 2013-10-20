@@ -37,8 +37,8 @@
 									<%= f.text_field :name, :class=>"form-control new_item_form_input" %>
 								</div>
 								<div class="form-group">
-									<%= f.label :description, "DESCRIPTION" %>
-									<%= f.text_area :description, :class=>"new_item_txt" %>
+									<%= f.label :description, "DESCRIPTION" %>(max 300)
+									<textarea id="dish_description" class="new_item_txt" rows="20" name="dish[description]" cols="40" maxlength="300"></textarea>
 								</div>
 								<div class="form-group">
 									<%= f.label :tag_names , :style => "padding-top: 10px;"%><br />

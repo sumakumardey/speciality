@@ -9,7 +9,7 @@
 				<div class="item_same_line item_main_info">
 					<div class="item_description_div">
 						<p class="item_title"><%= @dish.name %></p>
-						<p class="item_restaurant"><%= @dish.restaurant_name %></p>
+						<p class="item_restaurant"><%= link_to @dish.restaurant_name, restaurant_path(@dish.restaurant) %></p>
 						<p class="item_description_content"><%= @dish.description %></p>
 						<div class="dish_info_footer">
 							<div class="item_same_line_info">
@@ -41,9 +41,9 @@
 					<div class="item_properties_div">
 						<div class="item_description_div_points">
 							<p class="item_description_div_point">
-								<span class="ratings_average"><%= (@dish.avg_ratings || 0.0).to_f.round(2) %></span></p>
+								<span class="ratings_average"><%= (@dish.avg_ratings || 0.0).to_f.round(1) %></span></p>
 							<p class="item_description_div_rating">
-								<span class="no_of_people_rated"><%= @dish.no_of_ratings || 0 %></span> rating</p>
+								<span class="no_of_people_rated"><%= @dish.no_of_ratings || 0 %></span> Rating</p>
 						</div>
 						<div class="item_description_div_cost">
 							<p class="item_description_div_cost_value"> $<%=@dish.cost || 0%>  </p>
