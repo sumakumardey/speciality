@@ -1,7 +1,7 @@
 <% unless review.new_record? %>
 	<div class="reviews">
 		<div class="reviewer_image_container">
-			<img src="<%= asset_path 'default-profile-pic.png' %>" class="reviewer_image" > 
+      <%= foodie_profile_image(review.user, "review", "reviewer_image") %>
 			<p class="reviewer_name"><%= review.user.name %></p>
 			<p class="reviewer_rating">
 				<% rating = review.user.ratings_given.where({

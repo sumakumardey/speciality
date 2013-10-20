@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.binary   "avatar_file",         :limit => 2147483647
-    t.binary   "avatar_small_file",   :limit => 2147483647
     t.binary   "avatar_thumb_file",   :limit => 2147483647
+    t.binary   "avatar_small_file",   :limit => 2147483647
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "attachment_id"
+    t.string   "profile_image"
   end
 
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
