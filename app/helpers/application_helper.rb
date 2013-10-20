@@ -14,7 +14,7 @@ module ApplicationHelper
 
   def new_rating
     content_tag :div, "", "data_dimension" => "awesomeness",
-      :class => "new_star right_button_rate", "data-rating" => 0, "data-classname" => "User",
+      :class => "new_star right_button_rate img_star", "data-rating" => 0, "data-classname" => "User",
       "data-star-count" => 5
   end
 
