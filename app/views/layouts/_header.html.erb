@@ -19,7 +19,7 @@
 					<a href="#">Chennai</a>
 				</li>
 				<li>
-					<a href="#">Discover</a>
+          <%= link_to "Discover", search_path %>
 				</li>
 				<li class="navbar_list">
 					<%= link_to "Add Dish", new_dish_path, :class => "btn btn-danger header_btn", :id => "add_dish" %>
@@ -35,8 +35,8 @@
 	                               </ul>
 								  <% else %>
 								  <ul class="dropdown-menu dropdown-menu-home-logged-in" role="menu" aria-labelledby="dLabel">
-								  	<li><%= link_to "My Dishes", destroy_user_session_path, :method => :delete ,:class =>"header_my_dishes"  %></li>
-	                              	 <li><%= link_to "My Reviews", destroy_user_session_path, :method => :delete ,:class =>"header_my_reviews"  %></li>
+								  	<li><%= link_to "My Dishes", user_path(current_or_guest_user) + "#items", :class =>"header_my_dishes"  %></li>
+	                              	 <li><%= link_to "My Reviews", user_path(current_or_guest_user) + "#reviews", :class =>"header_my_reviews"  %></li>
 	                              	 <li><%= link_to "Log out", destroy_user_session_path, :method => :delete ,:class =>"header_my_logout"  %></li>
 	                               </ul>
 								    
