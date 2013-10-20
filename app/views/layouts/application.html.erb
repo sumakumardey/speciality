@@ -17,16 +17,19 @@
 </head>
 <body>
   <%= render partial: "layouts/header" %>
-  <div id="flash">
+  <div >
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    	<div class="alert alert-info" id="flash_#{name}" style="margin-bottom : 0px;"> <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a><%= msg %> </div>
     <% end %>
   </div>
  <!--  Current User :: <%= current_or_guest_user.name %>
   Current User Id :: <%= current_or_guest_user.id %> -->
 	<%= yield %>
-	<%= render partial: "layouts/footer" %>
 	<%= render partial: "layouts/modal" %>
   <%= render partial: "layouts/modal_edit" %>
 </body>
+<script type="text/javascript">
+ 	var rumbleBannerPlacement = "bottom";
+  </script>
+<script src="http://s0.railsrumble.com/banner.js" type="text/javascript"></script>
 </html>
