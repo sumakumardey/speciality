@@ -1,5 +1,13 @@
-$('#flash').html("<%= escape_javascript raw(flash_display) %>");
-<% if @review.valid? %>
+var error = $("#new_review #error_explanation");
+<% if @review.errors.any? %>
+  error.append('<ul>');
+  <% @review.errors.full_messages.each do |msg| %>
+    error.append("<li><%= msg %></li>");
+  <% end %>
+  error.append('</ul>');
+<% else %>
+  $('#flash').html("<%= escape_javascript raw(flash_display) %>");
+  error.empty();
 	$('.review_pagination_controller')
 		.append("<%= escape_javascript(render :partial => 'dishes/review',
 						:locals => { :review => @review }) %>");

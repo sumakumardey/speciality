@@ -65,9 +65,12 @@
 				WRITE A REVIEW FOR <span class="color_green">SOMETHING</span> AT SOMEWHERE
 			</p>
 			<%= form_for(@new_review, remote: true) do |new_review| %>
+        <div id="error_explanation">
+        </div>
 			<!-- <textarea class="commment_textarea"></textarea>  -->
 			<%= new_review.text_area :description, :class => "commment_textarea" %>
 			<%= new_review.hidden_field :dish_id, :value => @dish.id %>
+      <%= new_rating %>
 			<button class="btn btn-success right_button">SUBMIT REVIEW</button>
 			<% end %>
 		</div>
@@ -79,13 +82,18 @@
 <script>
 $('.map_opener').click(function()
 {
+	console.log('I am in map opener');
 	if($('.map').is(':visible'))
 	{
+		// var height = $('.section_item').css('height') - $('.map').css('height');
 		$('.map').slideUp();
+		// $('.section_item').css('height',height);
 	}
 	else
 	{
+		// var height = $('.section_item').css('height') + $('.map').css('height');
 		$('.map').slideDown();
+		// $('.section_item').css('height',height);
 	}
 
 	return false;

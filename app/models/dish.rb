@@ -2,7 +2,7 @@ class Dish < ActiveRecord::Base
 	searchkick autocomplete: ['name']
 	attr_accessible :avg_ratings, :description, :location_id, :name,
 			:no_of_ratings, :restaurant_id, :user_id, :tag_names, :restaurant_name, :attachment
-	attr_accessor :tag_names, :restaurant_name
+	attr_accessor :tag_names, :restaurant_name, :score
 	belongs_to :user
 	belongs_to :location
 	belongs_to :restaurant
@@ -22,6 +22,9 @@ class Dish < ActiveRecord::Base
 		order("created_at DESC").limit(items)
 	}
 	scope :include_tags, includes([:tags, :restaurant])
+
+  after_create :add_dish_rating
+
 	def search_data
 		{
 			tag: tags.collect(&:name),
@@ -29,7 +32,7 @@ class Dish < ActiveRecord::Base
 			location: location.address
 		}
 	end
-	
+
 	def total_ratings
 		avg_ratings.present? && no_of_ratings.present? ? avg_ratings * no_of_ratings : 0
 	end
@@ -37,6 +40,7 @@ class Dish < ActiveRecord::Base
 	before_save :build_new_tags
 	validates :restaurant_id, :presence => :true
 	validates :name, :presence => :true
+  validates :score, :presence => :true, :on => :create
 
 	def self.recently_added
 		Dish.find(:all, :include => :location, :order => "id desc", :limit => 8)
@@ -55,4 +59,9 @@ class Dish < ActiveRecord::Base
 				self.tags << tag
 			end
 		end
+
+    def add_dish_rating
+      rate(score, user_id, "awesomeness") 
+    end
+
 end
