@@ -1,6 +1,5 @@
-var el = $('#new_dish');
+var error = $("#new_dish #error_explanation");
 <% if @dish.errors.any? %>
-  var error = $("#new_dish #error_explanation");
   error.append('<ul>');
   <% @dish.errors.full_messages.each do |msg| %>
     error.append("<li><%= msg %></li>");
@@ -8,5 +7,6 @@ var el = $('#new_dish');
   error.append('</ul>');
 <% else %>
   $('#new_item_modal').modal('hide');
+  error.empty();
   window.location = "<%= dish_path(@dish) %>";
 <% end %>

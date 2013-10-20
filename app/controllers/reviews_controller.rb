@@ -43,6 +43,8 @@ class ReviewsController < ApplicationController
   def create
     @review = current_or_guest_user.reviews.new(params[:review])
     @review.dish = @dish
+    @review.score = params[:score]
+
     if @review.save
       flash[:notice] = "The review has been added."
     else
