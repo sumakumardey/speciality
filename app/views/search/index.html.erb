@@ -21,32 +21,47 @@
 </div>
 
 <div class="container container_item_page">
-	<div class="row_search_page ">
-		<div class="col-lg-6 padding-search">
+		<div class="col-lg-6 row_search_page">
 			<input type="text" style="padding-top:3.5px;padding-bottom:3.5px;width:355px;">
 			
 		</div>
-		<div class="col-lg-2 col-lg-offset-4 padding-search">
+		<div class="col-lg-2 col-lg-offset-4 row_search_page">
 		<button class="btn btn-success search_filter_opener">Filter</button>
 		</div>
+
+			<div class="row_search_page col-lg-6 filter_option_selector_container">
+				<p class="popular_tags_title">Popular Tags</p>
+				<div class="popular_tags"> 
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+					<span class="popular_tag">Brazilian</span>
+
+				</div>
+			</div>
+			<div class="row_search_page col-lg-6 filter_option_selector_container">
+				<p class="popular_tags_title">How much ?</p>
+				<input type="range" name="points"  id="range" value="50" min="1" max="1000">
+				<div> 
+					<span>Rs </span><span id="range_value">50</span>
+				</div>
+
+			</div>
+	<div class=" row_search_page ">
+		You are currently looking for <span class="badge" id="search_list_tag">dfisldfsd</span><span class="badge" id="search_list_cost">100</span> <span class="badge" id="search_list_dist">adyar</span>  
 	</div>
 
-	<div class="row_search_page search_filter_slidedown">
-		<div class="col-lg-12 ">
-			<div class="item_same_line filter_option_selector_container">
-				<p class="popular_tags">Popular Tags</p>
-			</div>
-			<div class="item_same_line filter_option_selector_container">
-				sldflsjflskjd
-			</div>
-		</div>
-	</div>
-
-	<div class="row_search_page ">
 		<div class="col-lg-12 row_search_page_container">
 			<%= render :partial => 'home/recently_added_dish',
 																						:collection => @dishes, :as => :dish %>
-		</div>
 		</div>
 	</div>
 </div>
@@ -72,5 +87,19 @@
 	});
 	$(document).ready(function () {
 		addTag('<%= @tags %>', true);
+		$('#range').change(function()
+		{
+			console.log('The value os ');
+			$('#range_value').html($(this).val());
+		})
+		$('.popular_tag').click(function () {
+			var $this = $(this);
+			$this.toggleClass("active");
+			if ($this.hasClass("active")) {
+				console.log('selected' + $this.val());
+			} else {
+				console.log('unselected' + $this.val());
+			}
+		})
 	});
 </script>
