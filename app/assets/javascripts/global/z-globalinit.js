@@ -114,7 +114,7 @@ var searchTag,
 				},
 				cache: false
 			},
-			header: '<h5 class="section-title">Dishes</h5>',
+			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">ITEMS</h5></div>',
 			template: '<p>{{ value }}</p>',
 			engine: MyEngine,
 			timeout: 1000
@@ -128,7 +128,7 @@ var searchTag,
 				},
 				cache: false
 			},
-			header: '<h5 class="section-title">Tags</h5>',
+			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">TAGS</h5>/div>',
 			template: '<p>{{ value }}</p>',
 			engine: MyEngine,
 			timeout: 1000
@@ -142,7 +142,7 @@ var searchTag,
 				},
 				cache: false
 			},
-			header: '<h5 class="section-title">Places</h5>',
+			header: '<div class="section-title" style="display:block;"><h5 style="text-align : center;color:#838383;">PLACES</h5></div>',
 			template: '<p>{{ value }}</p>',
 			engine: MyEngine,
 			timeout: 1000

@@ -28,14 +28,20 @@
 
 					<div class="dropdown">
 						<%= link_to "My Account", "#", :class => "btn btn-danger", :id => "login" , :'data-toggle' => "dropdown" %>
-                              <ul class="dropdown-menu dropdown-menu-home" role="menu" aria-labelledby="dLabel">
-                              	 <% if current_user? %> 
-	                              	 <li><a href="/users/auth/facebook" class="facebook">Sign in with facebook</a></li>
-	                                <li><a href="/users/auth/twitter" class="twitter">Sign in with Twitter</a></li>
+                              	 <% if current_user?%> 
+                              	 <ul class="dropdown-menu dropdown-menu-home-logged-out" role="menu" aria-labelledby="dLabel">
+	                              	 <li><a href="/users/auth/facebook" class="facebook"><img src="<%= asset_path 'login-facebook-icon.png' %>"><span style="padding-left:20px;">Sign in with facebook</span></a></li>
+	                                <li><a href="/users/auth/twitter" class="twitter"><img src="<%= asset_path 'login-twitter-icon.png' %>"><span style="padding-left:20px;">Sign in with Twitter</span></a></li>
+	                               </ul>
 								  <% else %>
-								    <li><%= link_to "Log out", destroy_user_session_path, :method => :delete ,:class =>"facebook"  %></li>
+								  <ul class="dropdown-menu dropdown-menu-home-logged-in" role="menu" aria-labelledby="dLabel">
+								  	<li><%= link_to "My Dishes", destroy_user_session_path, :method => :delete ,:class =>"header_my_dishes"  %></li>
+	                              	 <li><%= link_to "My Reviews", destroy_user_session_path, :method => :delete ,:class =>"header_my_reviews"  %></li>
+	                              	 <li><%= link_to "Log out", destroy_user_session_path, :method => :delete ,:class =>"header_my_logout"  %></li>
+	                               </ul>
+								    
 								  <% end %>     
-                              </ul>
+                              
                     </div>
 					
 				</li>
