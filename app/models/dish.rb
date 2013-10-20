@@ -3,7 +3,6 @@ class Dish < ActiveRecord::Base
 	attr_accessible :avg_ratings, :description, :location_id, :name,
 			:no_of_ratings, :restaurant_id, :user_id, :tag_names, :restaurant_name, :attachment,:cost
 	attr_accessor :tag_names, :restaurant_name, :score
-	validates :cost, :numericality => {:only_integer => true}
 	belongs_to :user
 	belongs_to :location
 	belongs_to :restaurant
@@ -43,6 +42,7 @@ class Dish < ActiveRecord::Base
 	validates :restaurant_id, :presence => :true
 	validates :name, :presence => :true
   validates :score, :presence => :true, :on => :create
+	validates :cost, :presence => :true, :numericality => {:only_integer => true}
 
 	def self.recently_added
 		Dish.find(:all, :include => :location, :order => "id desc", :limit => 8)

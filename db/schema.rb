@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20131019013848028) do
     t.integer  "restaurant_id"
     t.float    "avg_ratings"
     t.integer  "no_of_ratings"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "attachment_id"
-    t.float    "cost"
+    t.float    "cost",          :default => 0.0
   end
 
   create_table "locations", :force => true do |t|

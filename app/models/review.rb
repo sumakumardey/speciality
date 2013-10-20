@@ -14,7 +14,7 @@ class Review < ActiveRecord::Base
 	private
 		def set_user_reviews
 			self.user.increment(:no_of_reviews).save
-		end
+    end
 
     def set_dish_rating
       self.dish.rate(score, user_id, "awesomeness")
