@@ -10,6 +10,7 @@ class Location < ActiveRecord::Base
   	if !(self.latitude && self.longitude)
   		self.latitude = 37.7833
   		self.longitude = -122.4167
+  		self.address = self.address.blank? ? "San Francisco, CA" : self.address
   	end 
   end
 end
