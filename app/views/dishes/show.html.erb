@@ -79,13 +79,18 @@
 <script>
 $('.map_opener').click(function()
 {
+	console.log('I am in map opener');
 	if($('.map').is(':visible'))
 	{
+		// var height = $('.section_item').css('height') - $('.map').css('height');
 		$('.map').slideUp();
+		// $('.section_item').css('height',height);
 	}
 	else
 	{
+		// var height = $('.section_item').css('height') + $('.map').css('height');
 		$('.map').slideDown();
+		// $('.section_item').css('height',height);
 	}
 
 	return false;
