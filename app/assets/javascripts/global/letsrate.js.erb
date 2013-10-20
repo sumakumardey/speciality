@@ -1,5 +1,6 @@
 $.fn.raty.defaults.path = "/assets"; 
 $.fn.raty.defaults.half_show = true;  
+$.fn.raty.defaults.hints = ['bad', 'poor', 'regular', 'good', 'gorgeous'];
 
 $(function(){
 	$(".star").raty({
@@ -39,6 +40,8 @@ $(function(){
 			return $(this).attr('data-star-count')
 		}
 	});
+
+  $(".new_star").raty('score', 3);
 
   $(".new_star").raty('score', 3);
 

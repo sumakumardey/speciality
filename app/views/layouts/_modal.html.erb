@@ -7,7 +7,7 @@
 					<p class="new-item-heading">Add a new item to Speciality</p>
 				</div>
 				<div class="modal-body">
-					<%= form_for(@new_dish, remote: true, format: :js) do |f| %>
+					<%= form_for(@new_dish, remote: true, format: :json, multipart: true) do |f| %>
 						<div id="error_explanation">
 						<% if @new_dish.errors.any? %>
 							<h2>

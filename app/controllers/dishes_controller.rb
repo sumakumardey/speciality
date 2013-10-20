@@ -26,7 +26,7 @@ class DishesController < ApplicationController
 
   def show_image
     @dish = Dish.find(params[:dish_id])
-    send_data @dish.attachment.avatar.file_contents(:small), 
+    send_data @dish.avatar.file_contents(:small), 
       :type => 'image/png', :disposition => 'inline'
   end
 
@@ -59,12 +59,12 @@ class DishesController < ApplicationController
 		respond_to do |format|
 			if @dish.save
 				format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
-				format.json { render json: @dish, status: :created, location: @dish }
-        format.js
+				format.json { render json: @dish.id }
+        # format.js
 			else
 				format.html { render action: "new" }
 				format.json { render json: @dish.errors, status: :unprocessable_entity }
-        format.js
+        # format.js
 			end
 		end
 	end

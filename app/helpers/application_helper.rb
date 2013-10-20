@@ -34,6 +34,14 @@ module ApplicationHelper
     response
   end
 
+  def rendering_image_data(item, css="")
+    if item.avatar.file_contents(:small).blank?
+      image_tag asset_path "item-filler.png", :class => css
+    else
+      image_tag dish_show_image_path(item.id), :class => css
+    end
+  end
+
   def foodie_profile_image(foodie, size, css)
     if foodie.twitter_id?
       twitter_profile_image(foodie, size, css)
