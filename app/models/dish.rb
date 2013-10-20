@@ -21,11 +21,12 @@ class Dish < ActiveRecord::Base
 	scope :find_recent_dishes, lambda { |items|
 		order("created_at DESC").limit(items)
 	}
-	scope :include_tags, includes([:tags, :restaurant])
+	scope :include_tags, includes([:tags, :restaurant,:location])
 	def search_data
 		{
 			tag: tags.collect(&:name),
-			name: name
+			name: name,
+			location: location.address
 		}
 	end
 	
@@ -39,6 +40,10 @@ class Dish < ActiveRecord::Base
 
 	def self.recently_added
 		Dish.find(:all, :include => :location, :order => "id desc", :limit => 8)
+	end
+
+	def self.search_all_with_id(ids)
+		Dish.find(:all,:conditions => { :id => ids } , :include => :location, :order => "id desc", :limit => 8)
 	end
 
 	private
