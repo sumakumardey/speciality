@@ -1,3 +1,62 @@
 // Place all the styles related to the Dishes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.custom-file-upload {
+	position: relative;
+//	width:100%;
+//	border:1px solid #ddd;
+//	background:#f6f6f6;
+	text-align: center;
+	margin-bottom: 20px;
+//	font-size: 14px;
+	height: 28px;
+	font-size: 13px;
+	border: 1px solid #73be60;
+	background-color: #73be60;
+	float: left;
+	&:hover{
+//		background: #73be60;
+	}
+	input[type='file']{
+		z-index: 999999;
+		width:90%;
+		height:28px;
+		opacity:0;
+		cursor: pointer;
+	}
+	.file-upload{
+		position: absolute;
+		left:35px;
+//		top:18px;
+		top:5px;
+		.file-upload-text{
+			position: relative;
+			font-weight:bold;
+			text-align: center
+		}
+	}
+}
+
+
+.restaurant_label
+{
+	margin-top : 10px;
+}
+
+.modal_footer_down
+{
+	margin-top : 52px;
+	margin-right : 20px;
+}
+
+.modal_cancel
+{
+	padding-right : 10px;
+}
+
+.details_container_font
+{
+	font-size : 14px;
+	font-weight : 300;
+}

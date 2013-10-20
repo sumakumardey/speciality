@@ -28,13 +28,13 @@
 	<%= render :partial =>"/locations/form" %>
 	<div class="field">
 		<%= f.label :restaurant_name %><br />
-		<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete",
+		<%= f.text_field :restaurant_name, :class => "restaurant_autocomplete select2-input select2-default",
 		:'data-id' => @dish.restaurant_id, :'data-text' => @dish.restaurant_name  %>
 	</div>
 	<br/>
 	<div class="field">
 		<%= f.label :tag_names %><br />
-		<%= f.text_field :tag_names, :class => "tags_autocomplete",
+		<%= f.text_field :tag_names, :class => "tags_autocomplete select2-input select2-default",
 		:'data-value' => @dish.tags.map(&:name).join(","), :value => " " %>
 	</div>
 	<br/>

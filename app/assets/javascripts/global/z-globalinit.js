@@ -162,11 +162,6 @@ var searchTag,
 			});
 		});
   
-		$('#login').popover({
-			html : true,
-			animation : true,
-			content : 'hello'
-		});
 
 		$('#add_dish').click(function (ev) {
 			ev.preventDefault();
