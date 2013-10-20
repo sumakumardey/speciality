@@ -94,9 +94,16 @@ $('.map_opener').click(function()
 		// var height = $('.section_item').css('height') + $('.map').css('height');
 		$('.map').slideDown();
 		// $('.section_item').css('height',height);
+
+		//If opening for the first Time, initialize GMaps
+		if (!$('.map').data('rendered')) {
+			showLocationOnMap("<%=@dish.location.latitude%>","<%=@dish.location.longitude%>");
+			$('.map').data('rendered', true);
+		}
 	}
 
 	return false;
 });
-
 </script>
+
+
