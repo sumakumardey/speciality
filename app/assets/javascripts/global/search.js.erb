@@ -1,4 +1,4 @@
-var name, current_location, tags, maxValue;
+var name, current_location, tags, maxValue, sort="total_ratings";
 tags = tags || [];
 specialitySearch = function () {
 	var minValue = 1;
@@ -11,6 +11,7 @@ specialitySearch = function () {
 			'search[location]' : current_location,
 			'search[min_cost]' : minValue,
 			'search[max_cost]' : maxValue,
+			'search[sort]' : sort,
 		},
 		success: function (data) {
 			console.log(data);
@@ -19,6 +20,9 @@ specialitySearch = function () {
 };
 
 function addTag(value, initialize, customtype) {
+	if (value == undefined || value == "") {
+		return false;
+	}
 	if (tags.indexOf(value) === -1) { tags.push(value); }
 	customtype = customtype || "";
 	addFilterTagsUI(value, 'tag'+customtype);
@@ -115,6 +119,10 @@ function updateSelect2(value) {
 	}
 	$('input.tags_filter_autocomplete').select2('data', valuesArray);
 }
+function setSort(value) {
+	sort = value;
+	specialitySearch();
+}
 $(document).ready(function () {
 	$('.filter-tag-list').on('click', '.badge', function () {
 		var $this = $(this),
@@ -130,6 +138,12 @@ $(document).ready(function () {
 			removeTag(value, "Select2");
 			updateSelect2(value);
 		}
+	});
+	$('.sort-dishes').on('click', function () {
+		var $this = $(this),
+			value = $this.data('value');
+			console.log(value);
+			setSort(value);
 	});
 	$('.tags_filter_autocomplete').on('change', function (e) {
 		if (e.added) {

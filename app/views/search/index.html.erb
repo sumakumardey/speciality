@@ -27,7 +27,12 @@
 			
 		</div>
 		<div class="col-lg-2 col-lg-offset-4 row_search_page">
-		<button class="btn btn-success search_filter_opener">Filter</button>
+			<span>
+				 <img src="<%= asset_path 'dollar-png.png'%>" class='sort-dishes' data-value='cost'>
+				 <img src="<%= asset_path 'rating-png.png'%>" class='sort-dishes' data-value='total_ratings'>
+				 <img src="<%= asset_path 'location-png.png'%>" class='sort-dishes' data-value='location'>
+			</span>
+			<button class="btn btn-success search_filter_opener">Filter</button>
 		</div>
 
 			<div class="row_search_page col-lg-6 filter_option_selector_container">
@@ -87,7 +92,7 @@
 		
 	});
 	$(document).ready(function () {
-		addTag('<%= @tags %>', true);
+		addTag('<%= @onload_tags %>', true);
 		$('#range').change(function()
 		{
 			$('#range_value').html($(this).val());

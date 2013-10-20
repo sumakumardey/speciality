@@ -14,6 +14,9 @@ class SearchController < ApplicationController
 			end
 		end
 		@dishes = search_with_min_cost_and_max_cost unless @data.blank?
+		unless @dishes.blank?
+			sort_result
+		end
 		respond_to do |format|
 			format.js {  }
 			format.html {  }
@@ -24,7 +27,7 @@ class SearchController < ApplicationController
 	private
 
 	def search_with_tags
-		@tags = params[:search][:tags]
+		@onload_tags = params[:search][:tags]
 		Dish.search("#{params[:search][:tags]}", fields:[:tag],partial:true).collect(&:id)
 	end
 
@@ -52,6 +55,14 @@ class SearchController < ApplicationController
 		@tags = @recent_dishes.map(&:tags).reject(&:blank?).flatten.uniq
 		list = @tags.map { |tag| [tag, @recent_dishes.select{ |dish| dish.tags.include? tag }.sum(&:total_ratings)] }
 		@trending_tags_array = list.sort_by(&:last).reverse[0..11]
+	end
+	
+	def sort_result
+		allowed_sort = [:cost, :total_ratings, :location]
+		sort_attribute = (params[:search] || {})[:sort]
+		if sort_attribute.present? && allowed_sort.include?(sort_attribute.to_sym)
+			@dishes.sort!{|a,b| b.send(sort_attribute) <=> a.send(sort_attribute) }
+		end
 	end
 
 end
