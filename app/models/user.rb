@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	# Setup accessible (or protected) attributes for your model
 	attr_accessible :email, :password, :password_confirmation, :remember_me
 	attr_accessible :facebook_id, :location_id, :name, :no_of_ratings, :no_of_reviews, :twitter_id
+  attr_accessible :profile_image
 	attr_accessible :provider, :uid
 
 	belongs_to :location
@@ -40,7 +41,9 @@ class User < ActiveRecord::Base
 			provider:  auth.provider,
 			uid: auth.uid,
 			email: auth.info.email,
-			twitter_id: auth.info.nickname)
+			twitter_id: auth.info.nickname,
+      profile_image: auth.info.image
+      )
 		end
 		user
 	end
@@ -52,7 +55,9 @@ class User < ActiveRecord::Base
                          provider: auth.provider,
                          uid: auth.uid,
                          email: auth.info.email,
-                         facebook_id: auth.info.nickname)
+                         facebook_id: auth.info.nickname,
+                         profile_image: auth.info.image
+                        )
     end
     user
   end
