@@ -108,6 +108,7 @@ for (var text in NO_RESULT_TEXT) {
 				callback({ id: id, text: text});
 			}
 		});
+		
 		var MyEngine = {
 			compile: function(template) {
 				return {
@@ -183,26 +184,6 @@ for (var text in NO_RESULT_TEXT) {
 				parent.find('.front_component').fadeIn(100); 
 			});
 		});
-  
 
-		$('#add_dish').click(function (ev) {
-			ev.preventDefault();
-			$('#new_item_modal').modal();
-		});
-		$('#new_dish').submit(function (ev) {
-			ev.preventDefault();
-			$(this).ajaxSubmit({
-				dataType: 'json',
-				async: false,
-				beforeSubmit: function (arr, $form) {
-				},
-				success: function (data) {
-					if (data) {
-						window.location = '/dishes/' + data;
-					}
-				},
-				error: function (data) { }
-			});
-		})
 	});
 }(jQuery));
